@@ -4,13 +4,13 @@
   <section class="sidebar">
     @php
       $name = Route::currentRouteName();
-      $user = \Auth::user();
+      $user = \Auth::guard('admin')->user();
 
     @endphp
     <div class="user-panel">
       <div class="pull-left image">
         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-      </div>
+      </div> 
       <div class="pull-left info">
         <p>{{$user->name}}</p>
         <i class="fa fa-circle text-success"></i> Online
@@ -90,69 +90,6 @@
           </li>
         </ul> 
       </li>
-{{--       <li>
-        <a href="#">
-          <i class="fa fa-envelope"></i>
-          <span>Contact</span>
-          <span class="pull-right-container">
-            <span class="label label-primary pull-right">4</span>
-          </span>
-        </a>
-      </li> --}}
-{{--       <li class="treeview">
-        <a href="#">
-          <i class="fa fa-ambulance"></i>
-          <span>Shipping Manager</span>
-          <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-          <li>
-            <a href="#">
-              <i class="fa fa-ambulance"></i>
-              <span>Shipping</span>
-            </a>
-          </li>
-        </ul>
-      </li> --}}
-{{--       <li class="treeview">
-        <a href="">
-          <i class="fa fa-user-o"></i>
-          <span>Push Notification</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu" style="display: none;">
-          <li><a href=""><i class="fa fa-circle-o"></i>Push Tin tức</a></li>
-        </ul>
-      </li> --}}
-{{--       <li class="treeview">
-        <a href="#">
-          <i class="fa fa-cogs"></i>
-          <span>Config Manager</span>
-          <i class="fa fa-angle-left pull-right"></i>
-        </a>
-        <ul class="treeview-menu">
-          <li>
-            <a href="#">
-              <i class="fa fa-cog"></i>
-              <span>Config info</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-cogs"></i>
-              <span>Config global</span>
-            </a>
-          </li>          
-          <li>
-            <a href="#">
-              <i class="fa fa-cogs"></i>
-              <span>System information</span>
-            </a>
-          </li>
-        </ul>
-      </li> --}}
     </ul>
   </section>
   <!-- /.sidebar -->
