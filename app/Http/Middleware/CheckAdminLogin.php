@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use Auth;
 class CheckAdminLogin
 {
     /**
@@ -15,10 +15,12 @@ class CheckAdminLogin
      */
     public function handle($request, Closure $next)
     {
-        if($request->session()->has('admin_login')){
-            return $next($request);
-        }else{
+         $check_login_admin = Auth::guard('admin')->check();
+        if(!$check_login_admin){
             return redirect()->route('admin.login');
+            
+        }else{
+            return $next($request);
         }
     }
 }
