@@ -2,9 +2,10 @@
 @section('title','Chỉnh sửa danh mục')
 @section('content')
   <section class="content">
-    {{ Breadcrumbs::render('editcategory') }}
+    {{-- {{ Breadcrumbs::render('editcategory') }} --}}
     <div class="clearfix"></div>
-    <form method="POST" action="{{ route( 'system_admin.category.update' , ['id'=>$category->id] ) }}">
+    <form method="POST" action="{{ route( 'system_admin.category.update' , ['id'=>$categories['id']] ) }}">
+
       @method('PUT')
       {{ csrf_field() }}
       @if ($errors->all())
@@ -25,19 +26,13 @@
             <div class="tab-content">
               <div class="tab-pane active show" id="tab_detail">
                 <div class="form-group">
-                  <label for="title" class="control-label required">Tiêu đề</label>
-                  <input class="form-control" placeholder="Tiêu đề bài đăng" data-counter="120" name="title" type="text" id="title" value="{{ $category->title }}">
+                  <label for="title" class="control-label required">Tên danh mục</label>
+                  <input class="form-control" placeholder="Tiêu đề bài đăng" data-counter="120" name="title" type="text" id="title" value="{{$categories['name']}}">
                   @if ($errors->first('title')) 
                     <div class="error">{{ $errors->first('title') }}</div>
                   @endif
                 </div>       
-                <div class="form-group">
-                  <label for="description" class="control-label">Nội dung bài đăng</label>
-                  <textarea id="content" name="content" class="form-control">{!! $category->content !!}</textarea>
-                  @if ($errors->first('content')) 
-                    <div class="error">{{ $errors->first('content') }}</div>
-                  @endif
-                </div>
+         
               </div>
             </div><!-- end.tab-content -->
           </div>
@@ -65,8 +60,8 @@
             <div class="widget-body">
               <div class="ui-select-wrapper">
                 <select class="form-control ui-select ui-select" id="status" name="status">
-                  <option value="1" @if ( $category->status == 1  ) selected @endif>Đã kích hoạt</option>
-                  <option value="0" @if ( $category->status == 0  ) selected @endif>Đã vô hiệu</option>
+                  <option value="1" @if ( $categories['status'] == 1  ) selected @endif>Đã kích hoạt</option>
+                  <option value="0" @if ( $categories['status'] == 0  ) selected @endif>Đã vô hiệu</option>
                 </select>
                 @if ($errors->first('status')) 
                   <div class="error">{{ $errors->first('status') }}</div>
@@ -74,20 +69,7 @@
               </div>
             </div>
           </div>
-          <div class="widget meta-boxes">
-            <div class="widget-title">
-              <h4><label for="car_id" class="control-label required">Chuyên mục</label></h4>
-            </div>
-            <div class="widget-body">
-              <div class="form-group form-group-no-margin ">
-                <div class="multi-choices-widget list-item-checkbox">
-                  @if(count($categories)>0)
-                    {!! \App\Helpers\Common::showCategories($categories,$category->parent_id,$category->id,'parent_id') !!}
-                  @endif
-                </div>
-              </div>
-            </div>
-          </div>
+         
         </div>
       </div>
     </form>

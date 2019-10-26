@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,12 +28,14 @@
   <link rel="stylesheet" href="plugins/iCheck/all.css">
   <!-- Daterange picker -->
   <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="plugins/dropzone/dist/dropzone.css">
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=vietnamese" rel="stylesheet">
   <link rel="stylesheet" href="css/_all.css">
   <link rel="stylesheet" href="css/admin_core.css">
   {{-- <link rel="stylesheet" href="css/sweetalert.css"> --}}
   <link rel="stylesheet" href="css/sweetalert2.min.css">
+  <link rel="stylesheet" href="vendor/select2/select2.min.css">
   @yield('addcss')
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -55,6 +57,7 @@
 	</script>
 	<!-- Bootstrap 3.3.7 -->
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="vendor/select2/select2.min.js"></script>
 	<!-- Morris.js charts -->
 	<!-- Sparkline -->
 	<!-- jvectormap -->
@@ -62,6 +65,7 @@
 	<script src="bower_components/moment/min/moment.min.js"></script>
 	<!-- datepicker -->
 	<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+	<script type="text/javascript" src="js/dropzone.js"></script>
 	<!-- Bootstrap WYSIHTML5 -->
 	<!-- Slimscroll -->
 	<!-- FastClick -->
@@ -85,15 +89,18 @@
       entities_latin: false,
 	  };
 	</script>
-	<script>
+	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+	{{-- <script>
 		CKEDITOR.replace('content', options);
-	</script>
-	 {{-- <script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script> --}}
+	</script> --}}
+	 <script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script>
 
 	<script src="dist/js/demo.js"></script>
 	<script src="js/sweetalert2.min.js"></script>
 	{{-- <script src="js/app.js"></script> --}}
 	<script src="js/admin_core.js"></script>
+	<script src="js/dropzone-config.js"></script>
+	
 	@yield('addjs')
 </body>
 </html>

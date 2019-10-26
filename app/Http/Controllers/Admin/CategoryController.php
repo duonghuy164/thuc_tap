@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace App\Http\Controllers\Admin;
 
@@ -22,7 +22,7 @@ class CategoryController extends Controller
   {
     $status =  $request->status;
     try {
-      $conditions = Categories::select('id','title','status','created_at');
+      $conditions = Categories::select('id','name','status','created_at');
       if($status){
         $conditions = $conditions->where('status', '=', $status);
       }
@@ -48,7 +48,7 @@ class CategoryController extends Controller
   public function create()
   {
     try {
-      $categories = Categories::where('status',Categories::PUBLISHED)->select('id','title','parent_id')->get();
+      $categories = Categories::where('status',Categories::PUBLISHED)->select('*')->get();
       return view('admin.categories.create',compact('categories'));
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
@@ -64,11 +64,7 @@ class CategoryController extends Controller
     try {
       DB::beginTransaction();
       $category = new Categories();
-      $category->title = $request->title;
-      $category->slug = str_slug($request->title,'-');
-      $category->description = str_limit($request->content, 20, '...');
-      $category->content = $request->content;
-      $category->parent_id = $request->parent_id;
+      $category->name = $request->title;
       $category->status = $request->status;
       $category->save();
       DB::commit();
@@ -86,9 +82,9 @@ class CategoryController extends Controller
   public function edit(Request $request , $id)
   {
     try {
-      $categories = Categories::where('status',Categories::PUBLISHED)->select('id','title','parent_id','status')->get();
-      $category = Categories::find($id);
-      return view('admin.categories.edit',compact('category','categories'));
+      $categories = Categories::where('id',$id)->select('id','name','status')->first();
+      // dd($categories);
+      return view('admin.categories.edit',compact('categories'));
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
@@ -103,11 +99,7 @@ class CategoryController extends Controller
     try {
       DB::beginTransaction();
       $categorycategory = Categories::where('id', $request->id)->first();
-      $categorycategory->title = $request->title;
-      $categorycategory->slug = str_slug($request->title,'-');
-      $categorycategory->description = str_limit($request->content, 20, '...');
-      $categorycategory->content = $request->content;
-      $categorycategory->parent_id = $request->parent_id;
+      $categorycategory->name = $request->title;
       $categorycategory->status = $request->status;
       $categorycategory->save();
       DB::commit();
