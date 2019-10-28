@@ -30,7 +30,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="plugins/dropzone/dist/dropzone.css">
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=vietnamese" rel="stylesheet">
+  {{-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=vietnamese" rel="stylesheet"> --}}
   <link rel="stylesheet" href="css/_all.css">
   <link rel="stylesheet" href="css/admin_core.css">
   {{-- <link rel="stylesheet" href="css/sweetalert.css"> --}}
@@ -70,6 +70,7 @@
 	<!-- Slimscroll -->
 	<!-- FastClick -->
 	<!-- iCheck 1.0.1 -->
+	
 	<script src="plugins/iCheck/icheck.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="dist/js/adminlte.min.js"></script>
@@ -77,6 +78,7 @@
 	{{-- <script src="dist/js/pages/dashboard.js"></script> --}}
 	<!-- AdminLTE for demo purposes -->
 	<script src="{{ asset('bower_components/ckeditor/ckeditor.js') }}"></script>
+
 	<script>
 	  var options = {
 	    filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
@@ -89,11 +91,12 @@
       entities_latin: false,
 	  };
 	</script>
-	<script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+	{{-- <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script> --}}
+	{{-- <script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script> --}}
 	{{-- <script>
 		CKEDITOR.replace('content', options);
 	</script> --}}
-	 <script src="vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+	 
 
 	<script src="dist/js/demo.js"></script>
 	<script src="js/sweetalert2.min.js"></script>

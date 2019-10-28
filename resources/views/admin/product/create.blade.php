@@ -53,9 +53,9 @@
               <div class="tab-pane active show" id="tab_detail">
                 <div class="form-group">
                   <label for="name_product">Tên sản phẩm</label>
-                  <input class="form-control" placeholder="Tên sản phẩm" data-counter="120" name="name_product" type="text" id="name_product" value="{{ old('title') }}">
-                  @if ($errors->first('title')) 
-                    <div class="error">{{ $errors->first('title') }}</div>
+                  <input class="form-control" placeholder="Tên sản phẩm" data-counter="120" name="name_product" type="text" id="name_product" value="{{ old('name_product') }}">
+                  @if ($errors->first('name_product')) 
+                    <div class="error">{{ $errors->first('name_product') }}</div>
                   @endif
                 </div> 
 
@@ -67,6 +67,9 @@
                       <option value="{{$ct->id}}">{{$ct->name}}</option>
                     @endforeach
                   </select>
+                   @if ($errors->first('category')) 
+                    <div class="error">{{ $errors->first('category') }}</div>
+                  @endif
                 </div>
 
                 <div class="form-group">
@@ -77,6 +80,9 @@
                       <option value="{{$br->id}}">{{$br->name}}</option>
                     @endforeach
                   </select>
+                  @if ($errors->first('brand')) 
+                    <div class="error">{{ $errors->first('brand') }}</div>
+                  @endif
                 </div>
 
                 <div class="form-group">
@@ -87,6 +93,9 @@
                       <option value="{{$brs->id}}">{{$brs->name}}</option>
                     @endforeach
                   </select>
+                  @if ($errors->first('price')) 
+                    <div class="error">{{ $errors->first('price') }}</div>
+                  @endif
                 </div>
 
 
@@ -99,6 +108,9 @@
                       <option value="{{$cl->id}}">{{$cl->name}}</option>
                     @endforeach
                   </select>
+                  @if ($errors->first('color')) 
+                    <div class="error">{{ $errors->first('color') }}</div>
+                  @endif
                 </div>
 
                 <div class="form-group">
@@ -109,6 +121,9 @@
                       <option value="{{$brww->id}}">{{$brww->name}}</option>
                     @endforeach
                   </select> 
+                  @if ($errors->first('ram')) 
+                    <div class="error">{{ $errors->first('ram') }}</div>
+                  @endif
                 </div>
 
                 <div class="form-group">
@@ -119,6 +134,10 @@
                       <option value="{{$hd->id}}">{{$hd->name}}</option>
                     @endforeach
                   </select>
+
+                  @if ($errors->first('hard')) 
+                    <div class="error">{{ $errors->first('hard') }}</div>
+                  @endif
                 </div>
  
                 <div class="form-group">
@@ -129,6 +148,9 @@
                       <option value="{{$bsr->id}}">{{$bsr->name}}</option>
                     @endforeach
                   </select>
+                   @if ($errors->first('screen')) 
+                    <div class="error">{{ $errors->first('screen') }}</div>
+                  @endif
                 </div> 
 
                 <div class="form-group">
@@ -139,6 +161,9 @@
                       <option value="{{$brscs->id}}">{{$brscs->name}}</option>
                     @endforeach
                   </select>
+                   @if ($errors->first('cpu')) 
+                    <div class="error">{{ $errors->first('cpu') }}</div>
+                  @endif
                   
                 </div>
 
@@ -159,21 +184,33 @@
                 <div class="form-group">
                   <label for="">Giá sản phẩm</label>
                   <input class="form-control" placeholder="Giá sản phẩm" data-counter="120" name="price_product" type="text" id="price_product" value="{{ old('title') }}">
+                  @if ($errors->first('price_product')) 
+                    <div class="error">{{ $errors->first('price_product') }}</div>
+                  @endif
                 </div>
 
                 <div class="form-group">
                   <label for="">Sale sản phẩm</label>
                   <input class="form-control" placeholder="Sale sản phẩm" data-counter="120" name="sale_product" type="text" id="sale_product" value="{{ old('title') }}">
+                   @if ($errors->first('sale_product')) 
+                    <div class="error">{{ $errors->first('sale_product') }}</div>
+                  @endif
                 </div>
 
                 <div class="form-group">
                   <label for="">Số lượng sản phẩm</label>
                   <input class="form-control" placeholder="Số lượng sản phẩm" data-counter="120" name="qty_product" type="text" id="qty_product" value="{{ old('title') }}">
+                   @if ($errors->first('qty_product')) 
+                    <div class="error">{{ $errors->first('qty_product') }}</div>
+                  @endif
                 </div>           
                 
                  <div class="form-group">
                   <label for="">Mô tả sản phẩm</label>
                   <textarea name="description"></textarea>
+                  @if ($errors->first('description')) 
+                    <div class="error">{{ $errors->first('description') }}</div>
+                  @endif
                 </div>
 
 
@@ -235,7 +272,8 @@
                @if ($errors->first('thumbnail'))
                <div class="error">{{ $errors->first('thumbnail') }}</div>
                @endif
-             </div>
+            </div>
+
         </div>
       </div>
     </form>
@@ -243,7 +281,9 @@
 @stop
 @section('addjs')
   <script src="vendor/laravel-filemanager/js/lfm.js"></script>
+
   <script type="text/javascript">
+     $('#lfm').filemanager('image');
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
       checkboxClass: 'icheckbox_minimal-blue',
       radioClass   : 'iradio_minimal-blue'

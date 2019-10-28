@@ -102,7 +102,13 @@ Route::group(['prefix' => 'system-admin', 'namespace' => 'Admin' , 'middleware' 
   Route::get('product','ProductController@index')->name('system_admin.product.index');
   Route::get('product/create','ProductController@create')->name('system_admin.product.create');
   Route::post('product/store','ProductController@store')->name('system_admin.product.store');
+    
+  Route::get('product/edit/{id}','ProductController@edit')->name('system_admin.product.edit');
+  Route::put('product/update/{id}','ProductController@update')->name('system_admin.product.update');
 
+  Route::delete('product/destroy','ProductController@destroy')->name('system_admin.product.destroy');
+  Route::delete('product/destroyAll','ProductController@destroyAll')->name('system_admin.product.destroyAll');
+  Route::post('product/restory','ProductController@restore')->name('system_admin.product.restory');
   /*
   |--------------------------------------------------------------------------
   | Ram

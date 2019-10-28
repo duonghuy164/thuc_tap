@@ -25,7 +25,7 @@
                 <div class="col-md-4">
                   <div class="form-group">
                     <select name="status" class="form-control" id="status">
-                      <option value="">-Chọn trạng thái-</option>
+                      <option value="" @if( $request->status == null) selected @endif>-Chọn trạng thái-</option>
                       <option value="1" @if($request->has('status') && $request->status == 1) selected @endif>Đã kích hoạt</option>
                       <option value="0" @if($request->has('status') && $request->status == 0) selected @endif>Đã vô hiệu</option>
                     </select>
@@ -98,6 +98,7 @@
                     ID<a class="fa fa-fw fa-sort" href="#"></a>
                   </th>
                   <th style="width: 150px;">Tiêu đề</th>
+                  <th style="width: 100px;">Hình ảnh</th>
                   <th>Ngày đăng</th>
                   <th>Trạng thái</th>
                   <th>Tác vụ</th>
@@ -105,22 +106,29 @@
               </thead>
               <tbody>
                 @if (count($product) >0)
-                  @foreach($product as $product)
+                  @foreach($product as $products)
                     <tr>
-                      <td><input type="checkbox" class="grid-row-checkbox" data-id="{{ $product->id }}" /></td>
+                      <td><input type="checkbox" class="grid-row-checkbox" data-id="{{ $products->id }}" /></td>
                       <td>
-                        {{ $product->id }}
+                        {{ $products->id }}
                       </td>
                       <td>
-                        <a class="text-left" href="" title="{{ $product['name'] }}">{{ $product['name'] }}</a>
+                        <a class="text-left" href="" title="{{ $products['name'] }}">{{ $products['name'] }}</a>
                       </td>
-                      <td> {{ \Carbon\Carbon::parse($product->created_at)->format('d/m/Y')}}</td>
-                      <td> {!! \App\Helpers\Common::checkStatus($product->status) !!} </td>
                       <td>
-                        <a href="{{-- {{route('system_admin.cpu.edit',['id'=>$cpu->id])}} --}}" class="btn btn-icon btn-sm btn-primary tip">
+                        @if($products->avatar)
+                          <img src="{{ $products->avatar }}" width="50" alt="{{ $products->name }}">
+                        @else
+                          <img src="{{ asset('images/placeholder.png') }}" width="50" alt="{{ $products->name }}">
+                        @endif
+                      </td>
+                      <td> {{ \Carbon\Carbon::parse($products->created_at)->format('d/m/Y')}}</td>
+                      <td> {!! \App\Helpers\Common::checkStatus($products->status) !!} </td>
+                      <td>
+                        <a href="{{route('system_admin.product.edit',['id'=>$products->id])}}" class="btn btn-icon btn-sm btn-primary tip">
                           <i class="fa fa-eye"></i>
                         </a>
-                        <a href="javascript:void(0);" data-id="{{ $product->id }}" class="btn btn-icon btn-sm btn-danger deleteDialog tip">
+                        <a href="javascript:void(0);" data-id="{{ $products->id }}" class="btn btn-icon btn-sm btn-danger deleteDialog tip">
                           <i class="fa fa-trash"></i>
                         </a>
                       </td>
@@ -131,16 +139,16 @@
             </table>
           </div>
           <div class="box-footer clearfix">
-            {{-- <div class="col-md-5">
-              Hiển thị trang <b>{{ $color->currentPage() }}</b> / <b>{{ $color->lastPage() }}</b>
-            </div> --}}
-            {{-- <div class="col-md-7"> 
+            <div class="col-md-5">
+              Hiển thị trang <b>{{ $product->currentPage() }}</b> / <b>{{ $product->lastPage() }}</b>
+            </div>
+            <div class="col-md-7"> 
               {{ 
-                $color->appends([
+                $product->appends([
                   'keyword' => $request->query('keyword'),
                   'status' => $request->query('status'),
                 ])->links() 
-              }} --}}
+              }}
             </div>
           </div>
         </div>
@@ -153,15 +161,15 @@
     $(document).ready(function(){
       $('.deleteDialog').on('click', function() {
         var page_id = $(this).attr('data-id');
-        destroy( page_id , '{{ route('system_admin.category.destroy') }}' , '{{route('system_admin.category.index')}}' , "Bạn muốn xóa danh mục này!" );
+        destroy( page_id , '{{ route('system_admin.product.destroy') }}' , '{{route('system_admin.product.index')}}' , "Bạn muốn xóa danh mục này!" );
 
       });
     });
     $('.grid-batch-0').on('click', function() {
-      destroyAll( '{{ route('system_admin.category.destroyAll') }}' , '{{route('system_admin.category.index')}}' , "Bạn muốn xóa các danh mục đã chọn?" );
+      destroyAll( '{{ route('system_admin.product.destroyAll') }}' , '{{route('system_admin.product.index')}}' , "Bạn muốn xóa các danh mục đã chọn?" );
     });
     $('.grid-batch-1').on('click', function() {
-      restore( '{{ route('system_admin.category.restory') }}' , '{{route('system_admin.category.index')}}' , "Bạn muốn phục hồi các danh mục đã chọn?" );
+      restore( '{{ route('system_admin.product.restory') }}' , '{{route('system_admin.product.index')}}' , "Bạn muốn phục hồi các danh mục đã chọn?" );
     });
   </script>
 @stop
