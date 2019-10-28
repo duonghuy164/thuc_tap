@@ -12,6 +12,7 @@ use App\Models\Hard;
 use App\Models\Screen;
 use App\Models\Ram;
 use App\Models\Price;
+use App\Models\ProductColor;
 use App\Models\Cpu;
 use App\Models\Images;
 use DB;
@@ -76,7 +77,7 @@ class ProductController extends Controller
       $pd->category_id = $request->category;
       $pd->brand_id = $request->brand;
       $pd->price_id = $request->price;
-      $pd->color_id = json_encode($request->color,true);
+
       $pd->ram_id = $request->ram;
       $pd->screen_id = $request->screen;
       $pd->hard_drive_id = $request->hard;
@@ -90,7 +91,12 @@ class ProductController extends Controller
       $pd->created_at = date('Y-m-d H:i:s', time());
       $pd->avatar = $request->thumbnail;
       $pd->save();
-
+      foreach($request->color as $cl){
+        $cp = new ProductColor();
+        $cp->color_id = $cl;
+        $cp->product_id = $pd->id;
+        $cp->save();
+      }
       if (count(json_decode($request->cruise_gallery)) > 0) {
         foreach (json_decode($request->cruise_gallery) as $key => $value) {
           $image = new Images();
@@ -109,9 +115,8 @@ class ProductController extends Controller
   {
     try{
       $product = Product::find($id);
-      // dd($product);
-
-      $colors = explode(',' , substr($product->color_id,1,-1));
+      $colors = ProductColor::where('product_id',$id)->get();
+    
       $category = Categories::all();
       $brand  = Brands::all();
       $color  = Color::all();

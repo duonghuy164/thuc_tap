@@ -267,8 +267,10 @@
       $('.js-example-basic-multiple').select2();
     });
     @foreach($colors as $vas)
-      $('.js-example-basic-multiple').select2().select2('val','{{substr($vas,1,-1)}}');
+      console.log({{$vas->color_id}})
+      $('.js-example-basic-multiple').select2().select2('val','{{$vas->color_id}}');
     @endforeach
+    
     CKEDITOR.replace( 'promotion' );
     CKEDITOR.replace( 'description' );
     $("div#my-awesome-dropzone").dropzone({
