@@ -77,7 +77,7 @@ class ProductController extends Controller
       $pd->category_id = $request->category;
       $pd->brand_id = $request->brand;
       $pd->price_id = $request->price;
-
+ 
       $pd->ram_id = $request->ram;
       $pd->screen_id = $request->screen;
       $pd->hard_drive_id = $request->hard;
@@ -136,14 +136,13 @@ class ProductController extends Controller
   {
     try{
      $cruise_in_id = Images::where('product_id',$id)->delete();
-
+     $color = ProductColor::where('product_id',$id)->delete();
       DB::beginTransaction();
       $pd = Product::find($id);
       $pd->name = $request->name_product;
       $pd->category_id = $request->category;
       $pd->brand_id = $request->brand;
       $pd->price_id = $request->price;
-      $pd->color_id = $request->brand;
       $pd->ram_id = $request->ram;
       $pd->screen_id = $request->screen;
       $pd->hard_drive_id = $request->hard;
@@ -164,6 +163,13 @@ class ProductController extends Controller
           $image->name = $value;
           $image->save();
         }
+      }
+     
+      foreach($request->color as $cl){
+        $cp = new ProductColor();
+        $cp->color_id = $cl;
+        $cp->product_id = $pd->id;
+        $cp->save();
       }
       return redirect()->route('system_admin.product.index');
     }catch (\Exception $e) {

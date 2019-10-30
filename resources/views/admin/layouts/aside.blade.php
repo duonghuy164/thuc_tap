@@ -29,13 +29,13 @@
       @endif
         <a href="{{ route('system_admin.dashboard') }}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-        </a>
+        </a> 
       </li>
       @php
         $arg_staff = array(
-          'system_admin.staffs.index',
-          'system_admin.staffs.create',
-          'system_admin.staffs.edit',
+          'system_admin.category.index',
+          'system_admin.category.create',
+          'system_admin.category.edit',
         );
       @endphp
       @if ( in_array($name, $arg_staff) )

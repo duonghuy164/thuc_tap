@@ -14,7 +14,7 @@
 
 Route::get('admin-login','Admin\LoginController@index')->name('admin.login');
 Route::post('admin-handle-login','Admin\LoginController@handleLogin')->name('admin.handle.login');
-
+ 
 Route::post('images-delete','HomeController@deleteImage')->name('images-delete');
 Route::post('images-save','HomeController@saveImage')->name('images-save');
 
@@ -36,7 +36,7 @@ Route::group(['prefix' => 'system-admin', 'namespace' => 'Admin' , 'middleware' 
   Route::put('staffs/{id}', 'StaffController@update')->name('system_admin.staffs.update');
 
   /*
-  |--------------------------------------------------------------------------
+  |------------- -------------------------------------------------------------
   | Category
   |--------------------------------------------------------------------------
   */

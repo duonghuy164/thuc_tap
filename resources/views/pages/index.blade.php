@@ -9,18 +9,15 @@
                     <select id="agileinfo-nav_search" name="agileinfo_search" required="">
                         <option value="">Danh mục</option>
                         <optgroup label="Điện thoại">
-                            <option value="Iphone">Iphone</option>
-                            <option value="Samsung">Samsung</option>
-                            <option value="Oppo">Oppo</option>
-                            <option value="Huawei">Huawei</option>
-                            <option value="Old Phone">Điện thoại cũ rẻ</option>
+                            @foreach($pd_phone as $pp_phone)
+                            <option value="{{$pp_phone->id}}">{{$pp_phone->name}}</option>
+                            @endforeach
+                            
                         </optgroup>
                         <optgroup label="Laptop">
-                            <option value="Fruits &amp; Vegetables">Macbook - iMac</option>
-                            <option value="Baby Care">HP</option>
-                            <option value="Soft Drinks &amp; Juices">Dell</option>
-                            <option value="Frozen Food">Asus</option>
-                            <option value="Bread &amp; Bakery">Acer</option>
+                            @foreach($pd_lap as $pp_lap)
+                            <option value="{{$pp_lap->id}}">{{$pp_lap->name}}</option>
+                            @endforeach
                         </optgroup>
                     </select>
                 </form>

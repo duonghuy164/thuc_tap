@@ -909,6 +909,7 @@ input.checked {
     color: #000;
     font-size: 16px;
     margin-bottom: 10px;
+    word-break: break-all;
 }
 .img-deal1 a{
     font-size: 18px;
