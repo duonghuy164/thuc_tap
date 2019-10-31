@@ -184,16 +184,14 @@
                 <div class="search-hotel">
                     <h3 class="agileits-sear-head">Search Here..</h3>
                    
-                        <input type="search" placeholder="Product name..." name="search" required="">
-                        <input type="submit" value=" ">
-                    
+                        <input type="search" placeholder="Product name..." name="search_name" id="search_name" value="{{app('request')->search_name}}">
                 </div>
                 <!-- price range -->
                 <div class="range">
                     <h3 class="agileits-sear-head">Price range</h3>
-                    <select name="" id="">
+                    <select name="name_price" id="name_price">
                         @foreach($price as $pr)
-                            <option value="{{$pr->id}}">{{$pr->name}}</option>
+                            <option value="{{$pr->id}}" {{app('request')->name_price == $pr->id ? 'selected' : ''}}>{{$pr->name}}</option>
                         @endforeach
                     </select>
                 </div>
@@ -209,14 +207,14 @@
                     <h3 class="agileits-sear-head">Customer Review</h3>
                     <ul>
                         <li>
-                            <a href="#">
+                            
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <i class="fa fa-star" aria-hidden="true"></i>
                                 <span>5.0</span>
-                            </a>
+                           
                         </li>
                         <li>
                             <a href="#">
@@ -267,8 +265,8 @@
                     <ul>
                         @foreach($brand as $br)
                             <li>
-                                <input type="checkbox" class="checked">
-                                <span class="span">{{$br->name}}</span>
+                                <input type="checkbox" class="checked name_brand" name="name_brand[]" id="{{$br->id}}" value="{{$br->id}}" {{ in_array($br->id, $name_brands) ? 'checked' : '' }}>
+                                <label class="span" for="{{$br->id}}">{{$br->name}}</label>
                             </li>
                         @endforeach
                     </ul>
@@ -309,7 +307,7 @@
                                     <img src="{{$pnn->avatar}}" alt="" class="img_home_hot">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
-                                            <a href="single.html" class="link-product-add-cart">Quick View</a>
+                                            <a href="{{route('detail',['id'=>$pnn->id])}}" class="link-product-add-cart">Quick View</a>
                                         </div>
                                     </div>
                                     <span class="product-new-top">New</span>
@@ -413,4 +411,17 @@
         </div>
     </div>
 
+@endsection
+@section('addjs')
+<script type="text/javascript">
+    $('#search_name').change(function(){
+        $(this).closest('form').submit();
+    });
+    $('#name_price').change(function(){
+        $(this).closest('form').submit();
+    });
+    $('.name_brand').change(function(){
+        $(this).closest('form').submit();
+    });
+</script>
 @endsection

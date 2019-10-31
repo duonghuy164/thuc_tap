@@ -5,12 +5,12 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="zxx')}}">
 
 <head>
     <title>Chào mừng bạn đến với BHQ Shop</title>
     <!--/tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1')}}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="BHQ Shop, web ban hang, mua sam online, dien thoai thong minh,smart phone,laptop,máy tính sách tay, Samsung, SonyEricsson, Motorola,LG,Asus,MSI,
 		Dell,Macbook,HP,Oppo,Huawei,Siêu thị điện máy,điện tử,gia dụng,điện máy xanh" />
@@ -24,17 +24,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         }
     </script>
     <!--//tags -->
-    <link href="front_end/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="front_end/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="front_end/css/font-awesome.css" rel="stylesheet">
+    <link href="{{asset('front_end/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('front_end/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('front_end/css/font-awesome.css')}}" rel="stylesheet')}}">
     <!--pop-up-box-->
-    <link href="front_end/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('front_end/css/popuo-box.css')}}" rel="stylesheet" type="text/css" media="all" />
     <!--//pop-up-box-->
     <!-- price range -->
-    <link rel="stylesheet" type="text/css" href="front_end/css/jquery-ui1.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('front_end/css/jquery-ui1.css')}}')}}">
     <!-- fonts -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 
 <body>
@@ -57,11 +57,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <!-- js-files -->
 <!-- jquery -->
-<script src="front_end/js/jquery-2.1.4.min.js"></script>
+<script src="{{asset('front_end/js/jquery-2.1.4.min.js')}}"></script>
 <!-- //jquery -->
 
 <!-- popup modal (for signin & signup)-->
-<script src="front_end/js/jquery.magnific-popup.js"></script>
+<script src="{{asset('front_end/js/jquery.magnific-popup.js')}}"></script>
 <script>
     $(document).ready(function () {
         $('.popup-with-zoom-anim').magnificPopup({
@@ -85,7 +85,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //popup modal (for signin & signup)-->
 
 <!-- cart-js -->
-<script src="front_end/js/minicart.js"></script>
+<script src="{{asset('front_end/js/minicart.js')}}"></script>
 <script>
     paypalm.minicartk.render(); //use only unique class names other than paypal1.minicart1.Also Replace same class name in css and minicart.min.js
 
@@ -109,7 +109,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //cart-js -->
 
 <!-- price range (top products) -->
-<script src="front_end/js/jquery-ui.js"></script>
+<script src="{{asset('front_end/js/jquery-ui.js')}}"></script>
 <script>
     //<![CDATA[
     $(window).load(function () {
@@ -129,7 +129,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //price range (top products) -->
 
 <!-- flexisel (for special offers) -->
-<script src="front_end/js/jquery.flexisel.js"></script>
+<script src="{{asset('front_end/js/jquery.flexisel.js')}}"></script>
 <script>
     $(window).load(function () {
         $("#flexiselDemo1").flexisel({
@@ -179,12 +179,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //password-script -->
 
 <!-- smoothscroll -->
-<script src="front_end/js/SmoothScroll.min.js"></script>
+<script src="{{asset('front_end/js/SmoothScroll.min.js')}}"></script>
 <!-- //smoothscroll -->
 
 <!-- start-smooth-scrolling -->
-<script src="front_end/js/move-top.js"></script>
-<script src="front_end/js/easing.js"></script>
+<script src="{{asset('front_end/js/move-top.js')}}"></script>
+<script src="{{asset('front_end/js/easing.js')}}"></script>
 <script>
     jQuery(document).ready(function ($) {
         $(".scroll").click(function (event) {
@@ -218,11 +218,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //smooth-scrolling-of-move-up -->
 
 <!-- for bootstrap working -->
-<script src="front_end/js/bootstrap.js"></script>
+<script src="{{asset('front_end/js/bootstrap.js')}}"></script>
 <!-- //for bootstrap working -->
 <!-- //js-files -->
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
+<script type="text/javascript')}}">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -233,6 +233,8 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+
+@yield('addjs')
 <!--End of Tawk.to Script-->
 </body>
 
