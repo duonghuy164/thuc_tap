@@ -23,10 +23,9 @@ class CartController extends Controller
     		],
     	];
     	Cart::add($cart);
-    	$conte = Cart::content();
-    	// dd($conte);
-    	$city  = DB::table('city')->select('id','name')->get()->toArray();
-    	return view('pages.checkout',compact('city','conte'));
+    	return response()->json([
+            'msg'=>'OK'
+        ]);
     }
 
     public function delete(Request $request)

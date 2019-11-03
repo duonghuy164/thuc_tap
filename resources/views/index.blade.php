@@ -7,7 +7,7 @@
             <div class="agileits-navi_search">
                 <form action="#" method="post">
                     <select id="agileinfo-nav_search" name="agileinfo_search" required="">
-                        <option value="">Danh mục</option>
+                        <option value="">{{trans('messages.category')}}</option>
                         <optgroup label="Điện thoại">
                             @foreach($pd_phone as $pp_phone)
                                 <option value="{{$pp_phone->id}}">{{$pp_phone->name}}</option>
