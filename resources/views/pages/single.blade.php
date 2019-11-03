@@ -72,13 +72,14 @@
                 
                 <div class="occasion-cart">
                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                        <form action="{{route('addToCart')}}" method="post">
+                       {{--  <form action="{{route('addToCart')}}" method="post">
                             @csrf
                             <fieldset>
                                 <input type="hidden" name="id_product" value="{{$pr->id}}" />
                                 <input type="submit" name="submit" value="Add to cart" class="button" />
                             </fieldset>
-                        </form>
+                        </form> --}}
+                        <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pr->id}}">Add to cart</a>
                     </div>
 
                 </div>
@@ -174,6 +175,24 @@ $(window).load(function() {
   $('.flexslider').flexslider({
     animation: "slide"
   });
+});
+$('.add_toCart').click(function{
+    var id_pr = $(this).attr('id');
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url:"{{route('addToCart')}}",
+        type:"POST",
+        data:{id:id_pr},
+
+        success:function(data){
+            if(data.msg == 'OK'){
+                alert('OK');
+                // location.reload();
+            }
+        } 
+    });
 });
 </script>
 @endsection
