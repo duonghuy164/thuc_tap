@@ -29,17 +29,17 @@
             <!-- //tittle heading -->
             <div class="col-md-5 single-right-left ">
                 <div class="grid images_3_of_2">
-                    <div class="flexslider">
+                    <div id="slider" class="flexslider">
                         <ul class="slides">
                             @foreach($image as $im)
-                            <li data-thumb="{{asset($im->name)}}">
-                                <div class="thumb-image">
-                                    <img src="{{asset($im->name)}}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                            <li>
+                               <img src="{{asset($im->name)}}"> 
                             </li>
                             @endforeach
                         </ul>
                         <div class="clearfix"></div>
                     </div>
+                    
                 </div>
             </div>
             <div class="col-md-7 single-right-left simpleCart_shelfItem">
@@ -113,7 +113,7 @@
                         <div class="w3l-specilamk">
                             <div class="speioffer-agile">
                                 <a href="single.html">
-                                    <img src="{{asset($ps->avatar)}}" alt="">
+                                    <img src="{{asset($ps->avatar)}}" class="img_home_hots" alt="">
                                 </a>
                             </div>
                             <div class="product-name-w3l">
@@ -172,4 +172,13 @@
     </div>
     <!-- //newsletter -->
 
+@endsection
+@section('addjs')
+<script type="text/javascript">
+$(window).load(function() {
+  $('.flexslider').flexslider({
+    animation: "slide"
+  });
+});
+</script>
 @endsection

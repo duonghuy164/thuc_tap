@@ -12,7 +12,7 @@
                 <a href="index.html">
                     <span>G</span>rocery
                     <span>S</span>hoppy
-                    <img src="front_end/images/logo2.png" alt=" ">
+                    <img src="{{asset('front_end/images/logo2.png')}}" alt=" ">
                 </a>
             </h1>
         </div>
