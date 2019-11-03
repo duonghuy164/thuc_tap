@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\ColorFormRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Color;
 use Carbon\Carbon;
@@ -9,7 +10,7 @@ use DB;
 class ColorController extends Controller
 {
 	const TAKE =15;
-  const ORDERBY = 'desc';	
+  const ORDERBY = 'desc';
     public function index(Request $request)
     {
     	$status =  $request->status;
@@ -27,7 +28,7 @@ class ColorController extends Controller
 	      $conditions->orderBy('id', self::ORDERBY);
 	      $color = $conditions->paginate( self::TAKE );
 	      return view('admin.color.index', compact('color'));
-	      
+
 	    } catch (\Exception $e) {
 	      return $this->renderJsonResponse( $e->getMessage() );
 	    }
@@ -36,14 +37,15 @@ class ColorController extends Controller
     public function create(Request $request)
     {
 	    	try {
-	      	
+
 	      return view('admin.color.create');
 	    } catch (\Exception $e) {
 	      return $this->renderJsonResponse( $e->getMessage() );
 	    }
     }
-    public function store(Request $request)
+    public function store(ColorFormRequest $request)
     {
+
     		try {
 		      DB::beginTransaction();
 		      $color = new Color();

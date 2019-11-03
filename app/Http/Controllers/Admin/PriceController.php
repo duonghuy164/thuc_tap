@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Price;
 use DB;
+use App\Http\Requests\Admin\PriceFormRequest;
 class PriceController extends Controller
 {
     const TAKE =15;
-  	const ORDERBY = 'desc'; 
+  	const ORDERBY = 'desc';
   public function index(Request $request)
   {
     $status =  $request->status;
@@ -27,7 +28,7 @@ class PriceController extends Controller
       $conditions->orderBy('id', self::ORDERBY);
       $product = $conditions->paginate( self::TAKE );
       return view('admin.price.index', compact('product'));
-      
+
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
@@ -36,15 +37,16 @@ class PriceController extends Controller
   public function create()
   {
     try{
-      
+
       return view('admin.price.create');
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
   }
 
-  public function store(Request $request)
+  public function store(PriceFormRequest $request)
   {
+      dd(1);
     try {
 		      DB::beginTransaction();
 		      $cpu = new Price();

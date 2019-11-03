@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Ram;
+use App\Http\Requests\Admin\RamFormRequest;
 use DB;
 class RamController extends Controller
 {
     const TAKE =15;
-  	const ORDERBY = 'desc'; 
+  	const ORDERBY = 'desc';
   public function index(Request $request)
   {
     $status =  $request->status;
@@ -27,7 +28,7 @@ class RamController extends Controller
       $conditions->orderBy('id', self::ORDERBY);
       $product = $conditions->paginate( self::TAKE );
       return view('admin.ram.index', compact('product'));
-      
+
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
@@ -36,14 +37,14 @@ class RamController extends Controller
   public function create()
   {
     try{
-      
+
       return view('admin.ram.create');
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
   }
 
-  public function store(Request $request)
+  public function store(RamFormRequest $request)
   {
     try {
 		      DB::beginTransaction();

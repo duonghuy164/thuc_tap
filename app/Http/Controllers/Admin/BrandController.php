@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Http\Requests\Admin\BrandFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Brands;
@@ -27,7 +27,7 @@ class BrandController extends Controller
       $conditions->orderBy('id', self::ORDERBY);
       $brand = $conditions->paginate( self::TAKE );
       return view('admin.brand.index', compact('brand'));
-      
+
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
@@ -36,14 +36,14 @@ class BrandController extends Controller
   public function create(Request $request)
     {
 	    	try {
-	      	
+
 	      return view('admin.brand.create');
 	    } catch (\Exception $e) {
 	      return $this->renderJsonResponse( $e->getMessage() );
 	    }
     }
 
-   public function store(Request $request)
+   public function store(BrandFormRequest $request)
     {
     		try {
 		      DB::beginTransaction();
