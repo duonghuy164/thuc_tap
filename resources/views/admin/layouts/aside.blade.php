@@ -29,13 +29,13 @@
       @endif
         <a href="{{ route('system_admin.dashboard') }}">
           <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-        </a>
+        </a> 
       </li>
       @php
         $arg_staff = array(
-          'system_admin.staffs.index',
-          'system_admin.staffs.create',
-          'system_admin.staffs.edit',
+          'system_admin.category.index',
+          'system_admin.category.create',
+          'system_admin.category.edit',
         );
       @endphp
       @if ( in_array($name, $arg_staff) )
@@ -43,24 +43,135 @@
       @else
         <li>
       @endif
-        <a href="{{route('system_admin.staffs.index')}}">
-          <i class="fa fa-database" aria-hidden="true"></i> <span>Nhân viên</span>
+        <a href="{{route('system_admin.category.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Danh mục</span>
         </a>
       </li>
+
       @php
-        $arg_page = array(
-          'system_admin.timekeeping.index'
+        $arg_staff = array(
+          'system_admin.color.index',
+          'system_admin.color.create',
+          'system_admin.color.edit',
         );
       @endphp
-      @if ( in_array($name, $arg_page) )
+      @if ( in_array($name, $arg_staff) )
         <li class="active">
       @else
         <li>
       @endif
-        <a href="{{route('system_admin.timekeeping.index')}}">
-          <i class="fa fa-database" aria-hidden="true"></i> <span>Chấm công</span>
+        <a href="{{route('system_admin.color.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Màu sắc</span>
         </a>
       </li>
+
+      @php
+        $arg_staff = array(
+          'system_admin.brand.index',
+        );
+      @endphp
+      @if ( in_array($name, $arg_staff) )
+        <li class="active">
+      @else
+        <li>
+      @endif
+        <a href="{{route('system_admin.brand.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Thương hiệu</span>
+        </a>
+      </li>
+
+      @php
+        $arg_staff = array(
+          'system_admin.hard.index',
+        );
+      @endphp
+      @if ( in_array($name, $arg_staff) )
+        <li class="active">
+      @else
+        <li>
+      @endif
+        <a href="{{route('system_admin.hard.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Hard Driver</span>
+        </a>
+      </li>
+
+      @php
+        $arg_staff = array(
+          'system_admin.screen.index',
+        );
+      @endphp
+      @if ( in_array($name, $arg_staff) )
+        <li class="active">
+      @else
+        <li>
+      @endif
+        <a href="{{route('system_admin.screen.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Screen</span>
+        </a>
+      </li>
+
+      @php
+        $arg_staff = array(
+          'system_admin.price.index',
+        );
+      @endphp
+      @if ( in_array($name, $arg_staff) )
+        <li class="active">
+      @else
+        <li>
+      @endif
+        <a href="{{route('system_admin.price.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Price</span>
+        </a>
+      </li>
+
+      @php
+        $arg_staff = array(
+          'system_admin.ram.index',
+        );
+      @endphp
+      @if ( in_array($name, $arg_staff) )
+        <li class="active">
+      @else
+        <li>
+      @endif
+        <a href="{{route('system_admin.ram.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Ram</span>
+        </a>
+      </li>
+  
+      @php
+        $arg_staff = array(
+          'system_admin.product.index',
+        );
+      @endphp
+      @if ( in_array($name, $arg_staff) )
+        <li class="active">
+      @else
+        <li>
+      @endif
+        <a href="{{route('system_admin.product.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>Sản Phẩm</span>
+        </a>
+      </li>
+
+      @php
+        $arg_staff = array(
+          'system_admin.cpu.index',
+        );
+      @endphp
+      @if ( in_array($name, $arg_staff) )
+        <li class="active">
+      @else
+        <li>
+      @endif
+        <a href="{{route('system_admin.cpu.index')}}">
+          <i class="fa fa-database" aria-hidden="true"></i> <span>CPU</span>
+        </a>
+      </li>
+
+
+      
       @php
         $arg_faq = array(
           'system_admin.faqs.index', 
@@ -84,7 +195,7 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <a href="{{route('system_admin.email.index')}}">
+            <a href="{{-- {{route('system_admin.email.index')}} --}}">
               <i class="fa fa-inbox"></i> Inbox
             </a>
           </li>

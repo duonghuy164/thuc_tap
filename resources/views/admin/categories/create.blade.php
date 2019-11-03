@@ -2,7 +2,7 @@
 @section('title','Thêm Danh Mục Mới')
 @section('content')
   <section class="content">
-    {{ Breadcrumbs::render('addcategory') }}
+   {{--  {{ Breadcrumbs::render('addcategory') }} --}}
     <div class="clearfix"></div>
     <form method="POST" action="{{ route('system_admin.category.store') }}">
       {{ csrf_field() }}

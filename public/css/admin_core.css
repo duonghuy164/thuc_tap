@@ -71,6 +71,7 @@ body {
 }
 .box-header {
 	color: #fff;
+  padding-left: 0;
 }
 .tab-content {
   border: 1px solid #ddd;
@@ -655,4 +656,17 @@ div.type-create{
 }
 .box-header.with-border .btn-group:first-child {
   display: none;
+}
+.box-header .title-ckeditor {
+  color: #000;
+  font-weight: 700;
+  font-size: 14px;
+}
+.cruise-content .box-info{
+  padding: 10px;
+}
+.dropzone .dz-preview .dz-image img{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
 }

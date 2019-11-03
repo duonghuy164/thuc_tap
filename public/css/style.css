@@ -1,0 +1,11 @@
+/*Home*/
+.img_home_hot{
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+}
+.img_home_hots{
+	width: 67px;
+	height: 70px;
+	object-fit: cover;
+}

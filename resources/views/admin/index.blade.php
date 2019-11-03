@@ -20,7 +20,7 @@
           <div class="icon">
             <i class="ion ion-person-add"></i>
           </div>
-          <a href="{{route('system_admin.post.index')}}" class="small-box-footer">Xem thêm <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="{{-- {{route('system_admin.post.index')}} --}}" class="small-box-footer">Xem thêm <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       <div class="col-lg-3 col-xs-6">
@@ -32,7 +32,7 @@
           <div class="icon">
             <i class="ion ion-pie-graph"></i>
           </div>
-          <a href="{{ route('system_admin.page.index')}}" class="small-box-footer">Xem thêm <i class="fa fa-arrow-circle-right"></i></a>
+          <a href="{{-- {{ route('system_admin.page.index')}} --}}" class="small-box-footer">Xem thêm <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>
       
