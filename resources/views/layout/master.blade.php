@@ -1,16 +1,11 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
-<html lang="zxx')}}">
+<html lang="zxx">
 
 <head>
     <title>Chào mừng bạn đến với BHQ Shop</title>
     <!--/tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1')}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="BHQ Shop, web ban hang, mua sam online, dien thoai thong minh,smart phone,laptop,máy tính sách tay, Samsung, SonyEricsson, Motorola,LG,Asus,MSI,
 		Dell,Macbook,HP,Oppo,Huawei,Siêu thị điện máy,điện tử,gia dụng,điện máy xanh" />
@@ -31,9 +26,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <link href="{{asset('front_end/css/popuo-box.css')}}" rel="stylesheet" type="text/css" media="all" />
     <!--//pop-up-box-->
     <!-- price range -->
-    <link rel="stylesheet" type="text/css" href="{{asset('front_end/css/jquery-ui1.css')}}')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front_end/css/jquery-ui1.css')}}">
     <!-- fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet')}}">
+
+   
+  <!-- Demo CSS -->
+    {{-- <link rel="stylesheet" href="{{asset('css/demo.css')}}" type="text/css" media="screen" /> --}}
+    <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
+
+    <!-- Modernizr -->
+  
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 
@@ -233,7 +236,29 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+<script src="{{asset('js/modernizr.js')}}"></script>
+<script defer src="{{asset('js/jquery.flexslider.js')}}"></script>
+<script type="text/javascript">
+    $(function(){
+      SyntaxHighlighter.all();
+    });
+    $(window).load(function(){
+      $('.flexslider').flexslider({
+        animation: "slide",
+        start: function(slider){
+          $('body').removeClass('loading');
+        }
+      });
+    });
+  </script>
+<script type="text/javascript" src="{{asset('js/shCore.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/shBrushXml.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/shBrushJScript.js')}}"></script>
 
+  <!-- Optional FlexSlider Additions -->
+<script src="{{asset('js/jquery.easing.js')}}"></script>
+<script src="{{asset('js/jquery.mousewheel.js')}}"></script>
+<script defer src="{{asset('js/demo.js')}}"></script>
 @yield('addjs')
 <!--End of Tawk.to Script-->
 </body>

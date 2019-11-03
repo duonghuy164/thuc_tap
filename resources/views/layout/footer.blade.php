@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="col-xs-4 w3l-rightmk">
-            <img src="front_end/images/tab3.png" alt=" ">
+            <img src="{{asset('front_end/images/tab3.png')}}" alt=" ">
         </div>
         <div class="clearfix"></div>
     </div>
@@ -177,10 +177,10 @@
                 <div class="agileits_app-devices">
                     <h5>Download the App</h5>
                     <a href="#">
-                        <img src="front_end/images/1.png" alt="">
+                        <img src="{{asset('front_end/images/1.png')}}" alt="">
                     </a>
                     <a href="#">
-                        <img src="front_end/images/2.png" alt="">
+                        <img src="{{asset('front_end/images/2.png')}}" alt="">
                     </a>
                     <div class="clearfix"> </div>
                 </div>
@@ -316,31 +316,31 @@
                 <h5>Payment Method</h5>
                 <ul>
                     <li>
-                        <img src="front_end/images/pay2.png" alt="">
+                        <img src="{{asset('front_end/images/pay2.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay5.png" alt="">
+                        <img src="{{asset('front_end/images/pay5.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay1.png" alt="">
+                        <img src="{{asset('front_end/images/pay1.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay4.png" alt="">
+                        <img src="{{asset('front_end/images/pay4.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay6.png" alt="">
+                        <img src="{{asset('front_end/images/pay6.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay3.png" alt="">
+                        <img src="{{asset('front_end/images/pay3.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay7.png" alt="">
+                        <img src="{{asset('front_end/images/pay7.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay8.png" alt="">
+                        <img src="{{asset('front_end/images/pay8.png')}}" alt="">
                     </li>
                     <li>
-                        <img src="front_end/images/pay9.png" alt="">
+                        <img src="{{asset('front_end/images/pay9.png')}}" alt="">
                     </li>
                 </ul>
             </div>
