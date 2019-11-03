@@ -6,7 +6,7 @@
             <div class="container">
                 <ul class="w3_short">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="{{route('home')}}">Home</a>
                         <i>|</i>
                     </li>
                     <li>Checkout</li>

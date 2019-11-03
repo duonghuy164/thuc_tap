@@ -9,7 +9,7 @@
         <!-- header-bot-->
         <div class="col-md-4 logo_agile">
             <h1>
-                <a href="index.html">
+                <a href="{{route('home')}}">
                     <span>G</span>rocery
                     <span>S</span>hoppy
                     <img src="{{asset('front_end/images/logo2.png')}}" alt=" ">

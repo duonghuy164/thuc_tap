@@ -1864,7 +1864,7 @@ Cart.prototype.save = function save() {
 
 /**
  * Proxies the checkout event
- * The assumption is the view triggers this and consumers subscribe to it
+ * The assumption is the view triggers this and consumers Đăng ký to it
  *
  * @param {object} The initiating event
  */

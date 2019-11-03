@@ -1,11 +1,11 @@
 <div class="footer-top">
     <div class="container-fluid">
         <div class="col-xs-8 agile-leftmk">
-            <h2>Get your Groceries delivered from local stores</h2>
-            <p>Free Delivery on your first order!</p>
+            <h2>Nhập địa chỉ để biết cửa hàng gần bạn nhất</h2>
+            <p>Miễn phi vận chuyển cho đơn hàng đầu tiên của bạn</p>
             <form action="#" method="post">
                 <input type="email" placeholder="E-mail" name="email" required="">
-                <input type="submit" value="Subscribe">
+                <input type="submit" value="Đăng ký">
             </form>
             <div class="newsform-w3l">
                 <span class="fa fa-envelope-o" aria-hidden="true"></span>
