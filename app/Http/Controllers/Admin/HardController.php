@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\HardFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Hard;
@@ -28,7 +29,7 @@ class HardController extends Controller
       $conditions->orderBy('id', self::ORDERBY);
       $hard = $conditions->paginate( self::TAKE );
       return view('admin.hard.index', compact('hard'));
-      
+
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
@@ -36,15 +37,16 @@ class HardController extends Controller
 
   public function create(Request $request)
     {
-	    	try {	
+	    	try {
 	      return view('admin.hard.create');
 	    } catch (\Exception $e) {
 	      return $this->renderJsonResponse( $e->getMessage() );
 	    }
     }
 
-   public function store(Request $request)
+   public function store(HardFormRequest $request)
     {
+
     		try {
 		      DB::beginTransaction();
 		      $hard = new Hard();
