@@ -39,7 +39,7 @@
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list">
                                 <li class="active">
-                                    <a class="nav-stylehead" href="front_end/index.html">Trang chủ
+                                    <a class="nav-stylehead" href="front_end/{{route('home')}}">Trang chủ
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
@@ -210,10 +210,10 @@
             <div class="container">
                 <ul class="w3_short">
                     <li>
-                        <a href="index.html">Home</a>
+                        <a href="route('home')">Home</a>
                         <i>|</i>
                     </li>
-                    <li>Kitchen Products</li>
+                    <li>Laptop</li>
                 </ul>
             </div>
         </div>
@@ -223,7 +223,7 @@
     <div class="ads-grid">
         <div class="container">
             <!-- tittle heading -->
-            <h3 class="tittle-w3l">Kitchen Products
+            <h3 class="tittle-w3l">Laptop
                 <span class="heading-style">
 					<i></i>
 					<i></i>
@@ -969,7 +969,7 @@
     <div class="featured-section" id="projects">
         <div class="container">
             <!-- tittle heading -->
-            <h3 class="tittle-w3l">Special Offers
+            <h3 class="tittle-w3l">Sản phẩm đặc biệt
                 <span class="heading-style">
 					<i></i>
 					<i></i>
