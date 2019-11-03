@@ -28,8 +28,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $product = Product::all();
-        $pd_phone = Product::select('id','name')->where('category_id',2)->get();
-        $pd_lap = Product::select('id','name')->where('category_id',1)->get();
+        $pd_phone = Product::select('id','name','avatar','sale','price')->where('category_id',2)->take(3)->get();
+        $pd_lap = Product::select('id','name','avatar','sale','price')->where('category_id',1)->take(3)->get();
   
        
         $product_sale = Product::select('id','name','avatar','sale','price')->orderBy('sale','asc')->take(10)->get();
@@ -55,7 +55,7 @@ class HomeController extends Controller
         }else{
             $name_brands = [];
         }
-        $product_new = $product_new->orderBy('created_at','asc')->take(12)->get();
+        //$product_new = $product_new->orderBy('created_at','asc')->take(12)->get();
 
         return view('index',compact('pd_phone','brand','pd_lap','product_new','product_sale','product_sales','price','name_brands','city'));
     }

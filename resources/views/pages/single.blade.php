@@ -76,10 +76,10 @@
                             @csrf
                             <fieldset>
                                 <input type="hidden" name="id_product" value="{{$pr->id}}" />
-                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
                             </fieldset>
                         </form> --}}
-                        <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pr->id}}">Add to cart</a>
+                        <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pr->id}}">{{trans('messages.addtocart')}}</a>
                     </div>
 
                 </div>
@@ -93,7 +93,7 @@
     <div class="featured-section" id="projects">
         <div class="container">
             <!-- tittle heading -->
-            <h3 class="tittle-w3l">Add More
+            <h3 class="tittle-w3l">{{trans('messages.addmore')}}
                 <span class="heading-style">
 					<i></i>
 					<i></i>
@@ -131,7 +131,7 @@
                                             <input type="hidden" name="currency_code" value="USD" />
                                             <input type="hidden" name="return" value=" " />
                                             <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
                                         </fieldset>
                                     </form> --}}
 
@@ -147,14 +147,14 @@
     <!-- //special offers -->
 
     <!-- newsletter -->
-    <div class="footer-top">
+    <!-- <div class="footer-top">
         <div class="container-fluid">
             <div class="col-xs-8 agile-leftmk">
-                <h2>Nhập địa chỉ để biết cửa hàng gần bạn nhất</h2>
-                <p>Miễn phi vận chuyển cho đơn hàng đầu tiên của bạn</p>
+                <h2>{{trans('messages.getlocal')}}</h2>
+                <p>{{trans('messages.freedeli')}}</p>
                 <form action="#" method="post">
                     <input type="email" placeholder="E-mail" name="email" required="">
-                    <input type="submit" value="Đăng ký">
+                    <input type="submit" value="{{trans('messages.subcribe')}}">
                 </form>
                 <div class="newsform-w3l">
                     <span class="fa fa-envelope-o" aria-hidden="true"></span>
@@ -165,7 +165,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-    </div>
+    </div> -->
     <!-- //newsletter -->
 
 @endsection
