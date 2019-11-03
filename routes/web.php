@@ -12,8 +12,9 @@
 */
  Route::get('/', 'HomeController@index')->name('home');
  Route::get('detail/{id}','HomeController@detail')->name('detail');
-
-
+ Route::post('cart','CartController@index')->name('addToCart');
+ Route::post('delete/cart','CartController@delete')->name('deleteCart');
+ Route::post('update/cart','CartController@update')->name('UpdateCart');
  
 Route::get('admin-login','Admin\LoginController@index')->name('admin.login');
 Route::post('admin-handle-login','Admin\LoginController@handleLogin')->name('admin.handle.login');
