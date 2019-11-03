@@ -1,4 +1,4 @@
-@extends('front-end.layout.master')
+@extends('layout.master')
 
 @section('content')
     <div class="services-breadcrumb">
@@ -29,7 +29,7 @@
             <!-- //tittle heading -->
             <div class="checkout-right">
                 <h4>Your shopping cart contains:
-                    <span>3 Products</span>
+                    <span>{{count($conte)}}</span>
                 </h4>
                 <div class="table-responsive">
                     <table class="timetable_sub">
@@ -39,142 +39,92 @@
                             <th>Product</th>
                             <th>Quality</th>
                             <th>Product Name</th>
-
                             <th>Price</th>
                             <th>Remove</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="rem1">
-                            <td class="invert">1</td>
-                            <td class="invert-image">
-                                <a href="single2.html">
-                                    <img src="images/a7.jpg" alt=" " class="img-responsive">
-                                </a>
-                            </td>
-                            <td class="invert">
-                                <div class="quantity">
-                                    <div class="quantity-select">
-                                        <div class="entry value-minus">&nbsp;</div>
-                                        <div class="entry value">
-                                            <span>1</span>
+                            @if(count($conte) > 0)
+                            @foreach($conte as $key => $vl)
+
+                                <tr class="rem1">
+                                    <td class="invert">{{$key}}</td>
+                                    <td class="invert-image">
+                                        <a href="single2.html">
+                                            <img src="{{$vl->options->image}}" alt=" " class="img-responsive">
+                                        </a>
+                                    </td>
+                                    <td class="invert">
+                                        <div class="quantity">
+                                            <div class="quantity-select">
+                                                <input type="number" class="qtyProduct" value="{{$vl->qty}}" id="{{$key}}">
+                                            </div>
                                         </div>
-                                        <div class="entry value-plus active">&nbsp;</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="invert">Spotzero Spin Mop</td>
-                            <td class="invert">$888.00</td>
-                            <td class="invert">
-                                <div class="rem">
-                                    <div class="close1"> </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="rem2">
-                            <td class="invert">2</td>
-                            <td class="invert-image">
-                                <a href="single2.html">
-                                    <img src="images/s6.jpg" alt=" " class="img-responsive">
-                                </a>
-                            </td>
-                            <td class="invert">
-                                <div class="quantity">
-                                    <div class="quantity-select">
-                                        <div class="entry value-minus">&nbsp;</div>
-                                        <div class="entry value">
-                                            <span>1</span>
+                                    </td>
+                                    <td class="invert">{{$vl->name}}</td>
+                                    <td class="invert">{{number_format(($vl->price-($vl->price * $vl->options->sale)/100)*$vl->qty)}}</td>
+                                    <td class="invert">
+                                        <a href="javascript:void(0)" class="deleteCart" id="{{$key}}">
+                                        <div class="rem">
+                                            <div class="close1"> </div>
                                         </div>
-                                        <div class="entry value-plus active">&nbsp;</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="invert">Fair & Lovely, 80 g</td>
-                            <td class="invert">$121.60</td>
-                            <td class="invert">
-                                <div class="rem">
-                                    <div class="close2"> </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="rem3">
-                            <td class="invert">3</td>
-                            <td class="invert-image">
-                                <a href="single.html">
-                                    <img src="images/s5.jpg" alt=" " class="img-responsive">
-                                </a>
-                            </td>
-                            <td class="invert">
-                                <div class="quantity">
-                                    <div class="quantity-select">
-                                        <div class="entry value-minus">&nbsp;</div>
-                                        <div class="entry value">
-                                            <span>1</span>
-                                        </div>
-                                        <div class="entry value-plus active">&nbsp;</div>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="invert">Sprite, 2.25L (Pack of 2)</td>
-                            <td class="invert">$180.00</td>
-                            <td class="invert">
-                                <div class="rem">
-                                    <div class="close3"> </div>
-                                </div>
-                            </td>
-                        </tr>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
             </div>
             <div class="checkout-left">
                 <div class="address_form_agile">
-                    <h4>Add a new Details</h4>
-                    <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
-                        <div class="creditly-wrapper wthree, w3_agileits_wrapper">
-                            <div class="information-wrapper">
-                                <div class="first-row">
-                                    <div class="controls">
-                                        <input class="billing-address-name" type="text" name="name" placeholder="Full Name" required="">
-                                    </div>
-                                    <div class="w3_agileits_card_number_grids">
-                                        <div class="w3_agileits_card_number_grid_left">
-                                            <div class="controls">
-                                                <input type="text" placeholder="Mobile Number" name="number" required="">
-                                            </div>
-                                        </div>
-                                        <div class="w3_agileits_card_number_grid_right">
-                                            <div class="controls">
-                                                <input type="text" placeholder="Landmark" name="landmark" required="">
-                                            </div>
-                                        </div>
-                                        <div class="clear"> </div>
-                                    </div>
-                                    <div class="controls">
-                                        <input type="text" placeholder="Town/City" name="city" required="">
-                                    </div>
-                                    <div class="controls">
-                                        <select class="option-w3ls">
-                                            <option>Select Address type</option>
-                                            <option>Office</option>
-                                            <option>Home</option>
-                                            <option>Commercial</option>
-
-                                        </select>
-                                    </div>
-                                </div>
-                                <button class="submit check_out">Delivery to this Address</button>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="checkout-right-basket">
-                        <a href="payment.html">Make a Payment
-                            <span class="fa fa-hand-o-right" aria-hidden="true"></span>
-                        </a>
-                    </div>
+                    <a href="#" class="btn btn-primary">Thanh Toán</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
         </div>
     </div>
+@endsection
+@section('addjs')
+    <script type="text/javascript">
+        $('.deleteCart').click(function(){
+            var rowid = $(this).attr('id');
+            $.ajax({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url:"{{route('deleteCart')}}",
+                type:"POST",
+                data:{id:rowid},
+
+                success:function(data){
+                    if(data.msg == 'OK'){
+                        alert('OK');
+                        // location.reload();
+                    }
+                } 
+            });
+        });
+
+        $('.qtyProduct').on('change',function(){
+            var val_qty = $(this).val();
+            var id_pr = $(this).attr('id');
+            $.ajax({
+                headers: {
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url:"{{route('UpdateCart')}}",
+                type:"POST",
+                data:{id:id_pr,qty:val_qty},
+
+                success:function(data){
+                    if(data.msg == 'OK'){
+                        alert('OK');
+                        // location.reload();
+                    }
+                } 
+            });
+        });
+    </script>
 @endsection
