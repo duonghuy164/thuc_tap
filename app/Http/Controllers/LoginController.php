@@ -119,6 +119,7 @@ class LoginController extends Controller
         try{
             $email = $request->email;
             $dt = Users::where('email',$email)->first();
+
             if($dt){
                 $id = $dt->id;
                 $cm = new CodeMail();
@@ -156,7 +157,9 @@ class LoginController extends Controller
 
             if($cm){
                 $code = $request->code;
+                dd($cm->code);
                 if($code == $cm->code){
+                    $cm = DB::table('codemail')->where('id',$id)->delete();
                     $pass = $request->pass;
                     $us = Users::where('id',$id)->first();
                     $us->password = bcrypt($pass);

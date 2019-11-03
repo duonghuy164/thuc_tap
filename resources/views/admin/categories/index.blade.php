@@ -5,7 +5,7 @@
     $request = request(); 
   @endphp
   <section class="content dataTables_wrapper">
-    {{ Breadcrumbs::render('categories') }}
+   {{--  {{ Breadcrumbs::render('categories') }} --}}
     <div class="clearfix"></div>
     @if (session('status_store'))
       <div class="note note-success"><p>{{ session('status_store') }}</p></div>
@@ -112,12 +112,12 @@
                         {{ $category->id }}
                       </td>
                       <td>
-                        <a class="text-left" href="{{route('system_admin.category.edit',['id'=>$category['id']])}}" title="{{ $category['title'] }}">{{ $category['title'] }}</a>
+                        <a class="text-left" href="" title="{{ $category['name'] }}">{{ $category['name'] }}</a>
                       </td>
                       <td> {{ \Carbon\Carbon::parse($category->created_at)->format('d/m/Y')}}</td>
                       <td> {!! \App\Helpers\Common::checkStatus($category->status) !!} </td>
                       <td>
-                        <a href="{{route('system_admin.category.edit',['id'=>$category['id']])}}" class="btn btn-icon btn-sm btn-primary tip">
+                        <a href="{{route('system_admin.category.edit',['id'=>$category->id])}}" class="btn btn-icon btn-sm btn-primary tip">
                           <i class="fa fa-eye"></i>
                         </a>
                         <a href="javascript:void(0);" data-id="{{ $category->id }}" class="btn btn-icon btn-sm btn-danger deleteDialog tip">
@@ -153,15 +153,15 @@
     $(document).ready(function(){
       $('.deleteDialog').on('click', function() {
         var page_id = $(this).attr('data-id');
-        destroy( page_id , '{{ route('system_admin.category.destroy') }}' , '{{ route('system_admin.category.index') }}' , "Bạn muốn xóa danh mục này!" );
+        destroy( page_id , '{{ route('system_admin.category.destroy') }}' , '{{route('system_admin.category.index')}}' , "Bạn muốn xóa danh mục này!" );
 
       });
     });
     $('.grid-batch-0').on('click', function() {
-      destroyAll( '{{ route('system_admin.category.destroyAll') }}' , '{{ route('system_admin.category.index') }}' , "Bạn muốn xóa các danh mục đã chọn?" );
+      destroyAll( '{{ route('system_admin.category.destroyAll') }}' , '{{route('system_admin.category.index')}}' , "Bạn muốn xóa các danh mục đã chọn?" );
     });
     $('.grid-batch-1').on('click', function() {
-      restore( '{{ route('system_admin.category.restore') }}' , '{{ route('system_admin.category.index') }}' , "Bạn muốn phục hồi các danh mục đã chọn?" );
+      restore( '{{ route('system_admin.category.restory') }}' , '{{route('system_admin.category.index')}}' , "Bạn muốn phục hồi các danh mục đã chọn?" );
     });
   </script>
 @stop
