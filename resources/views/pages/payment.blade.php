@@ -241,11 +241,11 @@
     <div class="footer-top">
         <div class="container-fluid">
             <div class="col-xs-8 agile-leftmk">
-                <h2>Nhập địa chỉ để biết cửa hàng gần bạn nhất</h2>
-                <p>Miễn phi vận chuyển cho đơn hàng đầu tiên của bạn</p>
+                <h2>{{trans('messages.getlocal')}}</h2>
+                <p>{{trans('messages.freedeli')}}</p>
                 <form action="#" method="post">
                     <input type="email" placeholder="E-mail" name="email" required="">
-                    <input type="submit" value="Đăng ký">
+                    <input type="submit" value="{{trans('messages.subscribe')}}">
                 </form>
                 <div class="newsform-w3l">
                     <span class="fa fa-envelope-o" aria-hidden="true"></span>

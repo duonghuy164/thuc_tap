@@ -22,29 +22,29 @@
             <ul>
                 <li>
                     <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
-                        <span class="fa fa-map-marker" aria-hidden="true"></span> Vị Trí</a>
+                        <span class="fa fa-map-marker" aria-hidden="true"></span> {{trans('messages.locator')}}</a>
                 </li>
                 <li>
                     <a href="#" data-toggle="modal" data-target="#myModal1">
-                        <span class="fa fa-truck" aria-hidden="true"></span>Vận Chuyển</a>
+                        <span class="fa fa-truck" aria-hidden="true"></span>{{trans('messages.track')}}</a>
                 </li>
                 <li>
                     <span class="fa fa-phone" aria-hidden="true"></span> 0356.989.090
                 </li>
                 <li>
                     <a href="#" data-toggle="modal" data-target="#myModal1">
-                        <span class="fa fa-unlock-alt" aria-hidden="true"></span> Đăng Nhập </a>
+                        <span class="fa fa-unlock-alt" aria-hidden="true"></span> {{trans('messages.signin')}} </a>
                 </li>
                 <li>
                     <a href="#" data-toggle="modal" data-target="#myModal2">
-                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> Đăng Ký </a>
+                        <span class="fa fa-pencil-square-o" aria-hidden="true"></span> {{trans('messages.signup')}} </a>
                 </li>
             </ul>
             <!-- //header lists -->
             <!-- search -->
             <div class="agileits_search">
                 <form action="#" method="post">
-                    <input name="Search" type="search" placeholder="Bạn tìm gì ngày hôm nay ?" required="">
+                    <input name="Search" type="search" placeholder="{{trans('messages.searchwhat')}}" required="">
                     <button type="submit" class="btn btn-default" aria-label="Left Align">
                         <span class="fa fa-search" aria-hidden="true"> </span>
                     </button>

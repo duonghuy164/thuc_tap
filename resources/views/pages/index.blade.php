@@ -8,7 +8,7 @@
                 <form action="#" method="post">
                     <select id="agileinfo-nav_search" name="agileinfo_search" required="">
                         <option value="">Danh mục</option>
-                        <optgroup label="Điện thoại">
+                        <optgroup label="{{trans('messages.phone')}}">
                             @foreach($pd_phone as $pp_phone)
                             <option value="{{$pp_phone->id}}">{{$pp_phone->name}}</option>
                             @endforeach
@@ -39,12 +39,12 @@
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list">
                                 <li class="active">
-                                    <a class="nav-stylehead" href="front_end/{{route('home')}}">Trang chủ
+                                    <a class="nav-stylehead" href="front_end/{{route('home')}}">{{trans('messages.home')}}
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Điện thoại
+                                    <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('messages.phone')}}
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu multi-column columns-3">
@@ -170,7 +170,7 @@
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="faqs.html">Chính sách</a>
+                                    <a class="nav-stylehead" href="faqs.html">{{trans('messages.policy')}}</a>
                                 </li>
                                 <li class="dropdown">
                                     <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
@@ -186,10 +186,10 @@
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="about.html">Về chúng tôi</a>
+                                    <a class="nav-stylehead" href="about.html">{{trans('messages.about')}}</a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="contact.html">Liên hệ</a>
+                                    <a class="nav-stylehead" href="contact.html">{{trans('messages.contact')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -234,15 +234,15 @@
             <!-- product left -->
             <div class="side-bar col-md-3">
                 <div class="search-hotel">
-                    <h3 class="agileits-sear-head">Search Here..</h3>
+                    <h3 class="agileits-sear-head">{{trans('messages.searchhere')}}</h3>
                     <form action="#" method="post">
-                        <input type="search" placeholder="Product name..." name="search" required="">
+                        <input type="search" placeholder="{{trans('messages.productname')}}" name="search" required="">
                         <input type="submit" value=" ">
                     </form>
                 </div>
                 <!-- price range -->
                 <div class="range">
-                    <h3 class="agileits-sear-head">Price range</h3>
+                    <h3 class="agileits-sear-head">{{trans('messages.pricerange')}}</h3>
                     <ul class="dropdown-menu6">
                         <li>
 
@@ -299,61 +299,7 @@
                 </div>
                 <!-- //discounts -->
                 <!-- reviews -->
-                <div class="customer-rev left-side">
-                    <h3 class="agileits-sear-head">Customer Review</h3>
-                    <ul>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span>5.0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>4.0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>3.5</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>3.0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>2.5</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                
                 <!-- //reviews -->
                 <!-- cuisine -->
                 <div class="left-side">
@@ -404,7 +350,7 @@
                 <!-- //cuisine -->
                 <!-- deals -->
                 <div class="deal-leftmk left-side">
-                    <h3 class="agileits-sear-head">Special Deals</h3>
+                    <h3 class="agileits-sear-head">{{trans('messages.specialdeals')}}</h3>
                     <div class="special-sec1">
                         <div class="col-xs-4 img-deals">
                             <img src="front_end/images/d2.jpg" alt="">
@@ -969,7 +915,7 @@
     <div class="featured-section" id="projects">
         <div class="container">
             <!-- tittle heading -->
-            <h3 class="tittle-w3l">Sản phẩm đặc biệt
+            <h3 class="tittle-w3l">{{trans('messages.specialoffers')}}
                 <span class="heading-style">
 					<i></i>
 					<i></i>

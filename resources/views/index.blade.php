@@ -8,7 +8,7 @@
                 <form action="#" method="post">
                     <select id="agileinfo-nav_search" name="agileinfo_search" required="">
                         <option value="">{{trans('messages.category')}}</option>
-                        <optgroup label="Điện thoại">
+                        <optgroup label="{{trans('messages.phone')}}">
                             @foreach($pd_phone as $pp_phone)
                                 <option value="{{$pp_phone->id}}">{{$pp_phone->name}}</option>
                             @endforeach
@@ -39,12 +39,12 @@
                         <div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav menu__list">
                                 <li class="active">
-                                    <a class="nav-stylehead" href="front_end/{{route('home')}}">Trang chủ
+                                    <a class="nav-stylehead" href="front_end/{{route('home')}}">{{trans('messages.home')}}
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Điện thoại
+                                    <a href="#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{trans('messages.phone')}}
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu multi-column columns-3">
@@ -116,26 +116,13 @@
                                     </ul>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="faqs.html">Chính sách</a>
-                                </li>
-                                <li class="dropdown">
-                                    <a class="nav-stylehead dropdown-toggle" href="#" data-toggle="dropdown">Pages
-                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu agile_short_dropdown">
-                                        <li>
-                                            <a href="icons.html">Web Icons</a>
-                                        </li>
-                                        <li>
-                                            <a href="typography.html">Typography</a>
-                                        </li>
-                                    </ul>
+                                    <a class="nav-stylehead" href="faqs.html">{{trans('messages.policy')}}</a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="about.html">Về chúng tôi</a>
+                                    <a class="nav-stylehead" href="about.html">{{trans('messages.about')}}</a>
                                 </li>
                                 <li class="">
-                                    <a class="nav-stylehead" href="contact.html">Liên hệ</a>
+                                    <a class="nav-stylehead" href="contact.html">{{trans('messages.contact')}}</a>
                                 </li>
                             </ul>
                         </div>
@@ -182,13 +169,13 @@
             @csrf
             <div class="side-bar col-md-3">
                 <div class="search-hotel">
-                    <h3 class="agileits-sear-head">Search Here..</h3>
+                    <h3 class="agileits-sear-head">{{trans('messages.searchhere')}}</h3>
                    
-                        <input type="search" placeholder="Product name..." name="search_name" id="search_name" value="{{app('request')->search_name}}">
+                        <input type="search" placeholder="{{trans('messages.productname')}}" name="search_name" id="search_name" value="{{app('request')->search_name}}">
                 </div>
                 <!-- price range -->
                 <div class="range">
-                    <h3 class="agileits-sear-head">Price range</h3>
+                    <h3 class="agileits-sear-head">{{trans('messages.pricerange')}}</h3>
                     <select name="name_price" id="name_price">
                         @foreach($price as $pr)
                             <option value="{{$pr->id}}" {{app('request')->name_price == $pr->id ? 'selected' : ''}}>{{$pr->name}}</option>
@@ -203,65 +190,11 @@
                 
                 <!-- //discounts -->
                 <!-- reviews -->
-                <div class="customer-rev left-side">
-                    <h3 class="agileits-sear-head">Customer Review</h3>
-                    <ul>
-                        <li>
-                            
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <span>5.0</span>
-                           
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>4.0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>3.5</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>3.0</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                <span>2.5</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                
                 <!-- //reviews -->
                 <!-- cuisine -->
                 <div class="left-side">
-                    <h3 class="agileits-sear-head">Brand</h3>
+                    <h3 class="agileits-sear-head">{{trans('messages.brand')}}</h3>
                     <ul>
                         @foreach($brand as $br)
                             <li>
@@ -274,7 +207,7 @@
                 <!-- //cuisine -->
                 <!-- deals -->
                 <div class="deal-leftmk left-side">
-                    <h3 class="agileits-sear-head">Special Deals</h3>
+                    <h3 class="agileits-sear-head">{{trans('messages.specialdeals')}}</h3>
                 @foreach($product_sales as $psl)
                     <div class="special-sec1">
                         <div class="col-xs-4 img-deals">
@@ -300,7 +233,8 @@
                     <!-- //first section -->
                     <!-- 2nd section) -->
                     <div class="product-sec1">
-                        @foreach($product_new as $pnn)
+                        <h1 class="text-center">Điện Thoại</h1>
+                        @foreach($pd_phone  as $pnn)
                             <div class="col-md-4 product-men">
                             <div class="men-pro-item simpleCart_shelfItem">
                                 <div class="men-thumb-item">
@@ -332,7 +266,7 @@
                                                 <input type="hidden" name="currency_code" value="USD" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                                                <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
                                             </fieldset>
                                         </form>
                                     </div>
@@ -345,6 +279,66 @@
                       
                         <div class="clearfix"></div>
                     </div>
+                    <div class="product-sec1 product-sec2">
+                        <div class="col-xs-7 effect-bg">
+                            <h3 class="">Pure Energy</h3>
+                            <h6>Enjoy our all healthy Products</h6>
+                            <p>Get Extra 10% Off</p>
+                        </div>
+                        <h3 class="w3l-nut-middle">Nuts & Dry Fruits</h3>
+                        <div class="col-xs-5 bg-right-nut">
+                            <img src="front_end/images/nut1.png" alt="">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="product-sec1">
+                        <h1 class="text-center">LapTop</h1>
+                        @foreach($pd_lap  as $pnn)
+                            <div class="col-md-4 product-men">
+                            <div class="men-pro-item simpleCart_shelfItem">
+                                <div class="men-thumb-item">
+                                    <img src="{{$pnn->avatar}}" alt="" class="img_home_hot">
+                                    <div class="men-cart-pro">
+                                        <div class="inner-men-cart-pro">
+                                            <a href="{{route('detail',['id'=>$pnn->id])}}" class="link-product-add-cart">Quick View</a>
+                                        </div>
+                                    </div>
+                                    <span class="product-new-top">New</span>
+                                </div>
+                                <div class="item-info-product ">
+                                    <h4>
+                                        <a href="single.html">{{$pnn->name}}</a>
+                                    </h4>
+                                    <div class="info-product-price">
+                                        <span class="item_price">$70.00</span>
+                                        <del>{{$pnn->price}}</del>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                        <form action="#" method="post">
+                                            <fieldset>
+                                                <input type="hidden" name="cmd" value="_cart" />
+                                                <input type="hidden" name="add" value="1" />
+                                                <input type="hidden" name="business" value=" " />
+                                                <input type="hidden" name="item_name" value="Organicana Red Chilli Powder, 100g" />
+                                                <input type="hidden" name="amount" value="70.00" />
+                                                <input type="hidden" name="discount_amount" value="1.00" />
+                                                <input type="hidden" name="currency_code" value="USD" />
+                                                <input type="hidden" name="return" value=" " />
+                                                <input type="hidden" name="cancel_return" value=" " />
+                                                <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
+                                            </fieldset>
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+                            </div>
+                        @endforeach
+
+                      
+                        <div class="clearfix"></div>
+                    </div>
+                    
                     <!-- //2nd section  -->
                     <!-- 3rd section -->
                     
@@ -360,7 +354,7 @@
     <div class="featured-section" id="projects">
         <div class="container">
             <!-- tittle heading -->
-            <h3 class="tittle-w3l">Sản phẩm đặc biệt
+            <h3 class="tittle-w3l">{{trans('messages.specialoffers')}}
                 <span class="heading-style">
 					<i></i>
 					<i></i>
@@ -398,7 +392,7 @@
                                             <input type="hidden" name="currency_code" value="USD" />
                                             <input type="hidden" name="return" value=" " />
                                             <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="Add to cart" class="button" />
+                                            <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
                                         </fieldset>
                                     </form>
                                 </div>
