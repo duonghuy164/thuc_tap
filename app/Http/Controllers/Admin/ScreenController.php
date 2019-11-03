@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use App\Http\Requests\Admin\ScreenFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Screen;
@@ -9,7 +9,7 @@ use DB;
 class ScreenController extends Controller
 {
     const TAKE =15;
-  	const ORDERBY = 'desc'; 
+  	const ORDERBY = 'desc';
   public function index(Request $request)
   {
     $status =  $request->status;
@@ -27,7 +27,7 @@ class ScreenController extends Controller
       $conditions->orderBy('id', self::ORDERBY);
       $product = $conditions->paginate( self::TAKE );
       return view('admin.screen.index', compact('product'));
-      
+
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
@@ -36,15 +36,16 @@ class ScreenController extends Controller
   public function create()
   {
     try{
-      
+
       return view('admin.screen.create');
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
   }
 
-  public function store(Request $request)
+  public function store(ScreenFormRequest $request)
   {
+
     try {
 		      DB::beginTransaction();
 		      $cpu = new Screen();

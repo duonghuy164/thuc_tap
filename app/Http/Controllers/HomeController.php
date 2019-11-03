@@ -30,7 +30,7 @@ class HomeController extends Controller
         $product = Product::all();
         $pd_phone = Product::select('id','name')->where('category_id',2)->get();
         $pd_lap = Product::select('id','name')->where('category_id',1)->get();
-        
+  
        
         $product_sale = Product::select('id','name','avatar','sale','price')->orderBy('sale','asc')->take(10)->get();
         $product_sales = Product::select('name','avatar','sale','price')->orderBy('sale','asc')->take(5)->get();

@@ -9,6 +9,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="BHQ Shop, web ban hang, mua sam online, dien thoai thong minh,smart phone,laptop,máy tính sách tay, Samsung, SonyEricsson, Motorola,LG,Asus,MSI,
 		Dell,Macbook,HP,Oppo,Huawei,Siêu thị điện máy,điện tử,gia dụng,điện máy xanh" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -32,7 +33,7 @@
 
    
   <!-- Demo CSS -->
-    {{-- <link rel="stylesheet" href="{{asset('css/demo.css')}}" type="text/css" media="screen" /> --}}
+   
     <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
 
     <!-- Modernizr -->

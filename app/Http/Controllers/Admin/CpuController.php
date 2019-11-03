@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Cpu;
+use App\Http\Requests\Admin\CpuFormRequest;
 use DB;
 class CpuController extends Controller
 {
@@ -27,7 +28,7 @@ class CpuController extends Controller
       $conditions->orderBy('id', self::ORDERBY);
       $cpu = $conditions->paginate( self::TAKE );
       return view('admin.cpu.index', compact('cpu'));
-      
+
     } catch (\Exception $e) {
       return $this->renderJsonResponse( $e->getMessage() );
     }
@@ -35,15 +36,16 @@ class CpuController extends Controller
 
   public function create(Request $request)
     {
-	    	try {	
+	    	try {
 	      return view('admin.cpu.create');
 	    } catch (\Exception $e) {
 	      return $this->renderJsonResponse( $e->getMessage() );
 	    }
     }
 
-   public function store(Request $request)
+   public function store(CpuFormRequest $request)
     {
+
     		try {
 		      DB::beginTransaction();
 		      $cpu = new Cpu();

@@ -10,7 +10,7 @@
                         <option value="">Danh mục</option>
                         <optgroup label="Điện thoại">
                             @foreach($pd_phone as $pp_phone)
-                            <option value="{{$pp_phone->id}}">{{$pp_phone->name}}</option>
+                                <option value="{{$pp_phone->id}}">{{$pp_phone->name}}</option>
                             @endforeach
                             
                         </optgroup>
