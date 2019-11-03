@@ -33,7 +33,7 @@
 
    
   <!-- Demo CSS -->
-    {{-- <link rel="stylesheet" href="{{asset('css/demo.css')}}" type="text/css" media="screen" /> --}}
+   
     <link rel="stylesheet" href="{{asset('css/flexslider.css')}}" type="text/css" media="screen" />
 
     <!-- Modernizr -->
