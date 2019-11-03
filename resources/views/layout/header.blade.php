@@ -57,7 +57,7 @@
                     <form action="#" method="post" class="last">
                         <input type="hidden" name="cmd" value="_cart">
                         <input type="hidden" name="display" value="1">
-                        <button class="w3view-cart" type="submit" name="submit" value="">
+                         <button class="w3view-cart" type="submit" name="submit" value="">
                             <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
                         </button>
                     </form>
@@ -94,24 +94,32 @@
                 <div class="main-mailposi">
                     <span class="fa fa-envelope-o" aria-hidden="true"></span>
                 </div>
-                <div class="modal_body_left modal_body_left1">
+              
+                @if(Auth::user())
+                    <div class="modal_body_left modal_body_left1">
+                    <h3 class="agileinfo_sign">{{Auth::user()->name}} </h3>
+                @else
+                    <div class="modal_body_left modal_body_left1">
                     <h3 class="agileinfo_sign">Sign In </h3>
                     <p>
                         Đăng nhập, Để bắt đầu mua sắm với BHQ ngay. Bạn chưa có tài khoản?
                         <a href="#" data-toggle="modal" data-target="#myModal2">
                             Đăng ký ngay</a>
                     </p>
-                    <form action="#" method="post">
+                    <form method="POST" enctype="multipart/form-data" id="upload_form_login">
+                        @csrf
                         <div class="styled-input agile-styled-input-top">
-                            <input type="text" placeholder="User Name" name="Name" required="">
+                            <input type="text" placeholder="User Name" name="email" required="">
                         </div>
                         <div class="styled-input">
                             <input type="password" placeholder="Password" name="password" required="">
                         </div>
-                        <input type="submit" value="Sign In">
+                            <a href="javascript:void(0)" class="btn btn-primary btn_login">Login</a>
+                            <p class="error_email_not"></p>
                     </form>
                     <div class="clearfix"></div>
                 </div>
+                @endif
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -138,12 +146,13 @@
                     <p>
                         Kết nối với chúng tôi! Hãy tạo tài khoản của bạn.
                     </p>
-                    <form action="#" method="post">
+                    <form method="POST" enctype="multipart/form-data" id="upload_form_sign_up">
+                        @csrf
                         <div class="styled-input agile-styled-input-top">
-                            <input type="text" placeholder="Họ và Tên" name="Name" required="">
+                            <input type="text" placeholder="Họ và Tên" name="name" required="">
                         </div>
                         <div class="styled-input">
-                            <input type="email" placeholder="E-mail" name="Email" required="">
+                            <input type="email" placeholder="E-mail" name="email" required="">
                         </div>
                         <div class="styled-input">
                             <input type="password" placeholder="Mật khẩu" name="password" id="password1" required="">
@@ -151,10 +160,11 @@
                         <div class="styled-input">
                             <input type="password" placeholder="Nhập lại" name="Confirm Password" id="password2" required="">
                         </div>
-                        <input type="submit" value="Đăng ký">
+                        <a href="javascript:void(0)" class="btn btn-success btn-sign-in">Đăng ký</a>
                     </form>
                     <p>
-                        <a href="#">Bằng cách ấn đăng ký, Tôi đã đồng ý với những điều khoản của các bạn</a>
+                        <a href="#" class="text_error">Bằng cách ấn đăng ký, Tôi đã đồng ý với những điều khoản của các bạn</a>
+                        <a href="#" class="text_submit"></a>
                     </p>
                 </div>
             </div>

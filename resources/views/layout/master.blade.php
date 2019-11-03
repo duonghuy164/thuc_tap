@@ -251,6 +251,8 @@
         }
       });
     });
+
+    
   </script>
 <script type="text/javascript" src="{{asset('js/shCore.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/shBrushXml.js')}}"></script>
@@ -261,6 +263,47 @@
 <script src="{{asset('js/jquery.mousewheel.js')}}"></script>
 <script defer src="{{asset('js/demo.js')}}"></script>
 @yield('addjs')
+<script type="text/javascript">
+    $('.btn-sign-in').click(function(){
+        $.ajax({
+            url:"{{route('user.signUp')}}",
+            type : "POST",
+            dataType:"JSON",
+            data: new FormData($('#upload_form_sign_up')[0]),
+            contentType: false,
+            cache:false,
+            processData: false,
+            success:function(data){
+                if(data.msg=='FAIL1'){
+                    $('.text_error').text('Tài khoản đã tồn tại');
+                }else if(data.msg == 'OK'){
+                    $('.text_submit').text('Vui lòng kiểm tra mail!');
+                }
+            }
+        });
+    });
+
+    $('.btn_login').click(function(){
+        $.ajax({
+            url:"{{route('user.login')}}",
+            type : "POST",
+            dataType:"JSON",
+            data: new FormData($('#upload_form_login')[0]),
+            contentType: false,
+            cache:false,
+            processData: false,
+            success:function(data){
+                if(data.msg=='FAIL1'){
+                    $('.error_email_not').text('Tài khoản không tồn tại');
+                }else if(data.msg == 'FAIL2'){
+                    $('.error_email_not').text('Tài khoản chưa kích hoạt');
+                }else if(data.msg == 'OK'){
+                    location.reload();
+                }
+            }
+        });
+    });
+</script>
 <!--End of Tawk.to Script-->
 </body>
 

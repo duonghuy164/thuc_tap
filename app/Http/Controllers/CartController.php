@@ -8,26 +8,42 @@ use DB;
 use Cart;
 class CartController extends Controller
 {
-    public function index(Request $request)
+    public function add(Request $request)
     {
-    	$id= $request->id_product;
+    	$id= $request->id;
     	$product =Product::find($id);
-    	$cart = [
-    		'id' => $id,
-    		'name' => $product->name,
-    		'price'=> $product->price,
-    		'qty' => 1,
-    		'options'=>[
-    			'image' => $product->avatar,
-    			'sale' => $product->sale,
-    		],
-    	];
-    	Cart::add($cart);
+    	// $cart = [
+    	// 	'id' => $id,
+    	// 	'name' => $product->name,
+    	// 	'price'=> $product->price,
+    	// 	'qty' => 1,
+    	// 	'options'=>[
+    	// 		'image' => $product->avatar,
+    	// 		'sale' => $product->sale,
+    	// 	],
+    	// ];
+    	Cart::add([
+            'id' => $id,
+            'name' => $product->name,
+            'price'=> $product->price,
+            'qty' => 1,
+            'options'=>[
+                'image' => $product->avatar,
+                'sale' => $product->sale,
+            ],
+            ]);
     	return response()->json([
             'msg'=>'OK'
         ]);
     }
 
+    public function index()
+    {
+        $city  = DB::table('city')->select('id','name')->get()->toArray();
+        $conte = Cart::content();
+
+        return view('pages.checkout',compact('city','conte'));
+    }
     public function delete(Request $request)
     {
     	$id = $request->id;

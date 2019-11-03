@@ -12,16 +12,20 @@
 */
  Route::get('/', 'HomeController@index')->name('home');
  Route::get('detail/{id}','HomeController@detail')->name('detail');
- Route::post('cart','CartController@index')->name('addToCart');
+ Route::post('cart','CartController@add')->name('addToCart');
  Route::post('delete/cart','CartController@delete')->name('deleteCart');
  Route::post('update/cart','CartController@update')->name('UpdateCart');
- 
+ Route::get('show/cart','CartController@index')->name('showCart');
 Route::get('admin-login','Admin\LoginController@index')->name('admin.login');
 Route::post('admin-handle-login','Admin\LoginController@handleLogin')->name('admin.handle.login');
  
 Route::post('images-delete','HomeController@deleteImage')->name('images-delete');
 Route::post('images-save','HomeController@saveImage')->name('images-save');
 
+
+Route::post('sign-up','User\LoginController@signUp')->name('user.signUp');
+Route::get('confirm/{id}','User\LoginController@confirm')->name('user.confirmMail');
+Route::post('user/login','User\LoginController@login')->name('user.login');
 
 
 Route::group(['prefix' => 'system-admin', 'namespace' => 'Admin' , 'middleware' => 'adminLogin' ], function () {

@@ -176,7 +176,7 @@ $(window).load(function() {
     animation: "slide"
   });
 });
-$('.add_toCart').click(function{
+$('.add_toCart').click(function(){
     var id_pr = $(this).attr('id');
     $.ajax({
         headers: {
