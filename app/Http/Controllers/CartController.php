@@ -60,4 +60,10 @@ class CartController extends Controller
     	Cart::update($id,$qty);
     	echo 'OK';
     }
+
+    public function payment()
+    {   
+        $city  = DB::table('city')->select('id','name')->get()->toArray();
+        return view('pages.payment',compact('city'));
+    }
 }

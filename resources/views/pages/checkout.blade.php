@@ -29,7 +29,7 @@
             <!-- //tittle heading -->
             <div class="checkout-right">
                 <h4>Your shopping cart contains:
-                    <span>{{count($conte)}}</span>
+                    <span class="cou_hih" id="{{count($conte)}}">{{count($conte)}}</span>
                 </h4>
                 <div class="table-responsive">
                     <table class="timetable_sub">
@@ -47,7 +47,7 @@
                             @if(count($conte) > 0)
                             @foreach($conte as $key => $vl)
 
-                                <tr class="rem1">
+                                <tr class="rem1" id="row_{{$key}}">
                                     <td class="invert">{{$key}}</td>
                                     <td class="invert-image">
                                         <a href="single2.html">
@@ -79,7 +79,7 @@
             </div>
             <div class="checkout-left">
                 <div class="address_form_agile">
-                    <a href="#" class="btn btn-primary">Thanh Toán</a>
+                    <a href="{{route('payment.index')}}" class="btn btn-primary">Thanh Toán</a>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -89,7 +89,25 @@
 @section('addjs')
     <script type="text/javascript">
         $('.deleteCart').click(function(){
-            var rowid = $(this).attr('id');
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        })
+
+        swalWithBootstrapButtons.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'No, cancel!',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.value) {
+             var rowid = $(this).attr('id');
             $.ajax({
                 headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -100,12 +118,37 @@
 
                 success:function(data){
                     if(data.msg == 'OK'){
-                        alert('OK');
+                        swalWithBootstrapButtons.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                        );
+                        $('#row_'+rowid).hide();
+                        var du = $('.cou_hih').attr('id');
+                        var dus = du - 1;
+                        $('.cou_hih').attr('id',dus);
+                        $('.cou_hih').text(dus);
                         // location.reload();
                     }
                 } 
             });
-        });
+            
+          } else if (
+            /* Read more about handling dismissals below */
+            result.dismiss === Swal.DismissReason.cancel
+          ) {
+            swalWithBootstrapButtons.fire(
+              'Cancelled',
+              'Your imaginary file is safe :)',
+              'error'
+            )
+          }
+        })
+    });
+        
+           
+    
+    
 
         $('.qtyProduct').on('change',function(){
             var val_qty = $(this).val();

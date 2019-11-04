@@ -31,6 +31,14 @@
                 <li>
                     <span class="fa fa-phone" aria-hidden="true"></span> 0356.989.090
                 </li>
+                @if(Auth::user())
+             
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#myModal3">
+                        {{Auth::user()->name}}
+                    </a>
+                </li>
+                @else
                 <li>
                     <a href="#" data-toggle="modal" data-target="#myModal1">
                         <span class="fa fa-unlock-alt" aria-hidden="true"></span> {{trans('messages.signin')}} </a>
@@ -39,6 +47,7 @@
                     <a href="#" data-toggle="modal" data-target="#myModal2">
                         <span class="fa fa-pencil-square-o" aria-hidden="true"></span> {{trans('messages.signup')}} </a>
                 </li>
+                @endif
             </ul>
             <!-- //header lists -->
             <!-- search -->
@@ -83,6 +92,9 @@
 <!-- //shop locator (popup) -->
 <!-- signin Model -->
 <!-- Modal1 -->
+@if(Auth::user())
+
+@else
 <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -95,10 +107,8 @@
                     <span class="fa fa-envelope-o" aria-hidden="true"></span>
                 </div>
               
-                @if(Auth::user())
-                    <div class="modal_body_left modal_body_left1">
-                    <h3 class="agileinfo_sign">{{Auth::user()->name}} </h3>
-                @else
+                
+                
                     <div class="modal_body_left modal_body_left1">
                     <h3 class="agileinfo_sign">Sign In </h3>
                     <p>
@@ -119,7 +129,7 @@
                     </form>
                     <div class="clearfix"></div>
                 </div>
-                @endif
+        
                 <div class="clearfix"></div>
             </div>
         </div>
@@ -167,6 +177,50 @@
                         <a href="#" class="text_submit"></a>
                     </p>
                 </div>
+            </div>
+        </div>
+        <!-- //Modal content-->
+    </div>
+</div>
+
+@endif
+
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body modal-body-sub_agile">
+                <div class="main-mailposi">
+                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                </div>
+              
+                
+                
+                    <div class="modal_body_left modal_body_left1">
+                    <h3 class="agileinfo_sign">Sign In </h3>
+                    <p>
+                        Đăng nhập, Để bắt đầu mua sắm với BHQ ngay. Bạn chưa có tài khoản?
+                        <a href="#" data-toggle="modal" data-target="#myModal2">
+                            Đăng ký ngay</a>
+                    </p>
+                    <form method="POST" enctype="multipart/form-data" id="upload_form_login">
+                        @csrf
+                        <div class="styled-input agile-styled-input-top">
+                            <input type="text" placeholder="User Name" name="email" required="">
+                        </div>
+                        <div class="styled-input">
+                            <input type="password" placeholder="Password" name="password" required="">
+                        </div>
+                            <a href="javascript:void(0)" class="btn btn-primary btn_login">Login</a>
+                            <p class="error_email_not"></p>
+                    </form>
+                    <div class="clearfix"></div>
+                </div>
+        
+                <div class="clearfix"></div>
             </div>
         </div>
         <!-- //Modal content-->

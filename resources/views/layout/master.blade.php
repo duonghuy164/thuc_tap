@@ -257,7 +257,7 @@
 <script type="text/javascript" src="{{asset('js/shCore.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/shBrushXml.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/shBrushJScript.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <!-- Optional FlexSlider Additions -->
 <script src="{{asset('js/jquery.easing.js')}}"></script>
 <script src="{{asset('js/jquery.mousewheel.js')}}"></script>

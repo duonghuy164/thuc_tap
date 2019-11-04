@@ -10,8 +10,11 @@
 | contains the "web" middleware group. Now create something great!
 | 
 */
- Route::get('/', 'HomeController@index')->name('home');
- Route::get('detail/{id}','HomeController@detail')->name('detail');
+Auth::routes();
+Auth::routes(['verify' => true]);
+
+ Route::get('/', 'User\HomeController@index')->name('home');
+ Route::get('detail/{id}','User\HomeController@detail')->name('detail');
  Route::post('cart','CartController@add')->name('addToCart');
  Route::post('delete/cart','CartController@delete')->name('deleteCart');
  Route::post('update/cart','CartController@update')->name('UpdateCart');
@@ -19,14 +22,16 @@
 Route::get('admin-login','Admin\LoginController@index')->name('admin.login');
 Route::post('admin-handle-login','Admin\LoginController@handleLogin')->name('admin.handle.login');
  
-Route::post('images-delete','HomeController@deleteImage')->name('images-delete');
-Route::post('images-save','HomeController@saveImage')->name('images-save');
+Route::post('images-delete','User\HomeController@deleteImage')->name('images-delete');
+Route::post('images-save','User\HomeController@saveImage')->name('images-save');
 
 
 Route::post('sign-up','User\LoginController@signUp')->name('user.signUp');
 Route::get('confirm/{id}','User\LoginController@confirm')->name('user.confirmMail');
 Route::post('user/login','User\LoginController@login')->name('user.login');
 
+
+Route::get('payment/cart','CartController@payment')->name('payment.index');
 
 Route::group(['prefix' => 'system-admin', 'namespace' => 'Admin' , 'middleware' => 'adminLogin' ], function () {
   
@@ -173,3 +178,6 @@ Route::group(['prefix' => 'system-admin', 'namespace' => 'Admin' , 'middleware' 
 
   Route::get('confirm/mail/{id}','LoginController@confirmMail')->name('confirm.mail');
   Route::post('handle/confirm/mail','LoginController@hanldeConfirmMail')->name('handle.confirm.mail');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

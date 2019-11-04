@@ -4,22 +4,22 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Users;
+use App\User;
 use App\Jobs\Vertifi;
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
    	public function signUp(Request $request)
    	{
-   		
 
    		$email = $request->email;
-   		$check_mail = Users::where('email',$email)->first();
+   		$check_mail = User::where('email',$email)->first();
    		if($check_mail){
    			return response()->json([
    			'msg'=> 'FAIL1'
    		]);
    		}else{
-   			$us= new Users();
+   			$us= new User();
    			$us->name = $request->name;
    			$us->email = $request->email;
    			$us->password = bcrypt($request->password);
@@ -39,7 +39,7 @@ class LoginController extends Controller
    	public function confirm(Request $request)
    	{
    		$id = $request->id;
-   		$uss = Users::find($id);
+   		$uss = User::find($id);
    		$uss->status = 1;
    		$uss->save();
    		return redirect()->route('home');
@@ -48,17 +48,23 @@ class LoginController extends Controller
    	public function login(Request $request)
    	{
    		$email = $request->email;
-
-   		$check_mail = Users::where('email',$email)->first();
+         $password = $request->password;
+         $ifo = [
+            'email'=>$email,
+            'password' => $password
+        ];
+   		$check_mail = User::where('email',$email)->first();
    		if($check_mail){
    			if($check_mail->status == 0){
    				return response()->json([
    					'msg'=>'FAIL2'
    				]);
    			}else{
-   				return response()->json([
-   					'msg'=>'OK'
-   				]);
+               if(Auth::attempt($ifo)){
+      				return response()->json([
+      					'msg'=>'OK'
+      				]);
+               }
    			}
    		}else{
    			return response()->json([

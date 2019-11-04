@@ -266,7 +266,8 @@
                                                 <input type="hidden" name="currency_code" value="USD" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
-                                                <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
+                                                 <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">{{trans('messages.addtocart')}}</a>
+                                                
                                             </fieldset>
                                         </form>
                                     </div>
@@ -314,7 +315,7 @@
                                         <del>{{$pnn->price}}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">Add to cart</a>
+                                        <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">{{trans('messages.addtocart')}}</a>
                                     </div>
 
                                 </div>
@@ -369,7 +370,7 @@
                                 </div>
                                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                     
-                                            <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pss->id}}">Add to cart</a>
+                                            <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pss->id}}">{{trans('messages.addtocart')}}</a>
                                     
 
                                     </form>
