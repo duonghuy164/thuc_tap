@@ -13,7 +13,7 @@
 Auth::routes();
 Auth::routes(['verify' => true]);
 
- Route::get('/', 'User\HomeController@index')->name('home');
+ Route::get('/', 'User\HomeController@index')->name('homes');
  Route::get('detail/{id}','User\HomeController@detail')->name('detail');
  Route::post('cart','CartController@add')->name('addToCart');
  Route::post('delete/cart','CartController@delete')->name('deleteCart');
@@ -31,7 +31,13 @@ Route::get('confirm/{id}','User\LoginController@confirm')->name('user.confirmMai
 Route::post('user/login','User\LoginController@login')->name('user.login');
 
 
+Route::post('update/user','User\LoginController@update')->name('update.user');
+Route::post('update/pass/user','User\LoginController@updatePass')->name('updatePass.user');
+
+Route::get('logout/user','User\LoginController@logout')->name('user.logouta');
 Route::get('payment/cart','CartController@payment')->name('payment.index');
+
+
 
 Route::group(['prefix' => 'system-admin', 'namespace' => 'Admin' , 'middleware' => 'adminLogin' ], function () {
   

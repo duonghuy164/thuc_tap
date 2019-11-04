@@ -21,6 +21,7 @@
     </script>
     <!--//tags -->
     <link href="{{asset('front_end/css/bootstrap.css')}}" rel="stylesheet" type="text/css" media="all" />
+    
     <link href="{{asset('front_end/css/style.css')}}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{asset('front_end/css/font-awesome.css')}}" rel="stylesheet')}}">
     <!--pop-up-box-->
@@ -164,7 +165,7 @@
 <!-- //flexisel (for special offers) -->
 
 <!-- password-script -->
-<script>
+{{-- <script>
     window.onload = function () {
         document.getElementById("password1").onchange = validatePassword;
         document.getElementById("password2").onchange = validatePassword;
@@ -179,7 +180,7 @@
             document.getElementById("password2").setCustomValidity('');
         //empty string means no validation error
     }
-</script>
+</script> --}}
 <!-- //password-script -->
 
 <!-- smoothscroll -->
@@ -226,17 +227,7 @@
 <!-- //for bootstrap working -->
 <!-- //js-files -->
 <!--Start of Tawk.to Script-->
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/5db6d803154bf74666b659aa/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
+
 <script src="{{asset('js/modernizr.js')}}"></script>
 <script defer src="{{asset('js/jquery.flexslider.js')}}"></script>
 <script type="text/javascript">
@@ -303,8 +294,62 @@
             }
         });
     });
+    $('#dateUser').datepicker();
+
+    $('.btn-update-profile-user').click(function(){
+        $.ajax({
+            url:"{{route('update.user')}}",
+            type : "POST",
+            dataType:"JSON",
+            data: new FormData($('#update_user_pr')[0]),
+            contentType: false,
+            cache:false,
+            processData: false,
+            success:function(data){
+                if(data.msg=='FAIL1'){
+                    $('.error_email_not').text('Tài khoản không tồn tại');
+                }else if(data.msg == 'FAIL2'){
+                    $('.error_email_not').text('Tài khoản chưa kích hoạt');
+                }else if(data.msg == 'OK'){
+                    location.reload();
+                }
+            }
+        });
+    });
+
+    $('.btn-update-pass-profile-user').click(function(){
+        $.ajax({
+            url:"{{route('updatePass.user')}}",
+            type : "POST",
+            dataType:"JSON",
+            data: new FormData($('#update_passw_user_pr')[0]),
+            contentType: false,
+            cache:false,
+            processData: false,
+            success:function(data){
+                if(data.msg=='FAIL'){
+                    alert('Password sai')
+                }else if(data.msg == 'FAIL2'){
+                    $('.error_email_not').text('Tài khoản chưa kích hoạt');
+                }else if(data.msg == 'OK'){
+                    location.reload();
+                }
+            }
+        });
+    });
 </script>
 <!--End of Tawk.to Script-->
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5db6d803154bf74666b659aa/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
 </body>
 
 </html>

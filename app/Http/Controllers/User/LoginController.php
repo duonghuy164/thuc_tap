@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Support\Facades\Hash;
 use App\Jobs\Vertifi;
 use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
@@ -72,4 +73,45 @@ class LoginController extends Controller
    			]);
    		}
    	}
+
+      public function logout(){
+         Auth::logout();
+         return redirect()->route('homes');
+      }
+
+      public function update(Request $request)
+      {
+         $id = $request->idUser;
+         $us = User::find($id);
+         $us->name = $request->nameUser;
+         $us->phone = $request->phoneUser;
+         $us->date = $request->dateUser;
+         $us->address = $request->addressUser;
+         $us->save();
+
+         return response()->json([
+            'msg' => 'OK'
+         ]);
+      }
+
+      public function updatePass(Request $request)
+      {
+         $id = $request->idUser;
+         $us = User::find($id);
+         $passOl = $request->passOldUser;
+
+         if(Hash::check($passOl, $us->password)){
+            $passNew = $request->passNewUser;
+
+            $us->password = bcrypt($passNew);
+            $us->save();
+            return response()->json([
+               'msg' => 'OK'
+            ]);
+         }else{
+            return response()->json([
+               'msg' => 'FAIL'
+            ]);
+         }
+      }
 }

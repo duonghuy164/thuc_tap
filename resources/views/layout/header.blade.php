@@ -8,8 +8,8 @@
     <div class="header-bot_inner_wthreeinfo_header_mid">
         <!-- header-bot-->
         <div class="col-md-4 logo_agile">
-            <h1>
-                <a href="{{route('home')}}">
+            <h1> 
+                <a href="{{route('homes')}}">
                     <span>G</span>rocery
                     <span>S</span>hoppy
                     <img src="{{asset('front_end/images/logo2.png')}}" alt=" ">
@@ -20,30 +20,42 @@
         <div class="col-md-8 header">
             <!-- header lists -->
             <ul>
-                <li>
+                <li class="hihi">
                     <a class="play-icon popup-with-zoom-anim" href="#small-dialog1">
                         <span class="fa fa-map-marker" aria-hidden="true"></span> {{trans('messages.locator')}}</a>
                 </li>
-                <li>
+                <li  class="hihi">
                     <a href="#" data-toggle="modal" data-target="#myModal1">
                         <span class="fa fa-truck" aria-hidden="true"></span>{{trans('messages.track')}}</a>
                 </li>
-                <li>
+                <li  class="hihi">
                     <span class="fa fa-phone" aria-hidden="true"></span> 0356.989.090
                 </li>
                 @if(Auth::user())
              
-                <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal3">
+                <li  class="hihi">
+                    {{-- <a href="#" data-toggle="modal" data-target="#myModal3">
                         {{Auth::user()->name}}
-                    </a>
+                    </a> --}}
+                
+                
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{Auth::user()->name}} <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a href="#" data-toggle="modal" data-target="#myModal3">Thông tin cá nhân</a></li>
+                    <li><a href="#" data-toggle="modal" data-target="#myModal4">Thay đổi mật khẩu</a></li>
+                    <li><a href="{{route('user.logouta')}}">Đăng xuất</a></li>
+                  </ul>
+                </div>
                 </li>
                 @else
-                <li>
+                <li  class="hihi">
                     <a href="#" data-toggle="modal" data-target="#myModal1">
                         <span class="fa fa-unlock-alt" aria-hidden="true"></span> {{trans('messages.signin')}} </a>
                 </li>
-                <li>
+                <li  class="hihi">
                     <a href="#" data-toggle="modal" data-target="#myModal2">
                         <span class="fa fa-pencil-square-o" aria-hidden="true"></span> {{trans('messages.signup')}} </a>
                 </li>
@@ -184,7 +196,7 @@
 </div>
 
 @endif
-
+@if(Auth::user())
 <div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
@@ -200,23 +212,31 @@
                 
                 
                     <div class="modal_body_left modal_body_left1">
-                    <h3 class="agileinfo_sign">Sign In </h3>
-                    <p>
-                        Đăng nhập, Để bắt đầu mua sắm với BHQ ngay. Bạn chưa có tài khoản?
-                        <a href="#" data-toggle="modal" data-target="#myModal2">
-                            Đăng ký ngay</a>
-                    </p>
-                    <form method="POST" enctype="multipart/form-data" id="upload_form_login">
+                    <h3 class="agileinfo_sign">Thông tin cá nhân</h3>
+                    <form method="POST" id="update_user_pr" enctype="multipart/form-data">
                         @csrf
-                        <div class="styled-input agile-styled-input-top">
-                            <input type="text" placeholder="User Name" name="email" required="">
-                        </div>
-                        <div class="styled-input">
-                            <input type="password" placeholder="Password" name="password" required="">
-                        </div>
-                            <a href="javascript:void(0)" class="btn btn-primary btn_login">Login</a>
-                            <p class="error_email_not"></p>
+                        <input type="hidden" name="idUser" value="{{Auth::user()->id}}" placeholder="">
+                    <div class="form-group">
+                        <label for="">Họ tên:</label>
+                        <input type="text" name="nameUser" value="{{Auth::user()->name}}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Số điện thoại:</label>
+                        <input type="text" name="phoneUser" value="{{Auth::user()->phone}}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Ngày sinh:</label>
+                        <input type="text" name="dateUser" id="dateUser" value="{{Auth::user()->date}}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Địa chỉ:</label>
+                        <input type="text" name="addressUser" value="{{Auth::user()->address}}" class="form-control">
+                    </div>
                     </form>
+                        <a href="javascript:void(0)" class="btn btn-success text-center btn-update-profile-user">Cập nhật</a>
                     <div class="clearfix"></div>
                 </div>
         
@@ -226,6 +246,53 @@
         <!-- //Modal content-->
     </div>
 </div>
+
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body modal-body-sub_agile">
+                <div class="main-mailposi">
+                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                </div>
+              
+                
+                
+                    <div class="modal_body_left modal_body_left1">
+                    <h3 class="agileinfo_sign">Thay đổi mật khẩu</h3>
+                    <form method="POST" id="update_passw_user_pr" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="idUser" value="{{Auth::user()->id}}" placeholder="">
+                    <div class="form-group">
+                        <label for="">Mật khẩu cũ:</label>
+                        <input type="password" name="passOldUser" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Mật khẩu mới:</label>
+                        <input type="password" name="passNewUser" value="" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Nhập lại mật khẩu:</label>
+                        <input type="password" name=""  value="" class="form-control">
+                    </div>
+
+                    </form>
+                        <a href="javascript:void(0)" class="btn btn-success text-center btn-update-pass-profile-user">Cập nhật</a>
+                    <div class="clearfix"></div>
+                </div>
+        
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- //Modal content-->
+    </div>
+</div>
+@endif
 <!-- //Modal2 -->
 <!-- //signup Model -->
 <!-- //header-bot -->
