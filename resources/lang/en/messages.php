@@ -36,4 +36,10 @@ return [
 'downapp'=>'Download the App',
 'address' =>'139 Chien Thang - Thanh Tri - Ha Noi.',
 'addmore'=>'Add More',
+'quickview'=>'Quick View',
+'new'=>'New',
+'outofstock'=>'Out of stock',
+'slidemid'=>'Smart Shopping',
+'enjoy'=>'Enjoy our all quality Products',
+'getextra'=>'Get Extra 10% Off'
 ];

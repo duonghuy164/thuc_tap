@@ -174,7 +174,7 @@
                         <input type="search" placeholder="{{trans('messages.productname')}}" name="search_name" id="search_name" value="{{app('request')->search_name}}">
                 </div>
                 <!-- price range -->
-                <div class="range">
+                <div class="box">
                     <h3 class="agileits-sear-head">{{trans('messages.pricerange')}}</h3>
                     <select name="name_price" id="name_price">
                         @foreach($price as $pr)
@@ -215,7 +215,7 @@
                         </div>
                         <div class="col-xs-8 img-deal1">
                             <h3>{{$psl->name}}</h3>
-                            <a href="">$18.00</a>
+                            <!-- <a href="">$18.00</a> -->
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -241,17 +241,17 @@
                                     <img src="{{$pnn->avatar}}" alt="" class="img_home_hot">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
-                                            <a href="{{route('detail',['id'=>$pnn->id])}}" class="link-product-add-cart">Quick View</a>
+                                            <a href="{{route('detail',['id'=>$pnn->id])}}" class="link-product-add-cart">{{trans('messages.quickview')}}</a>
                                         </div>
                                     </div>
-                                    <span class="product-new-top">New</span>
+                                    <span class="product-new-top">{{trans('messages.new')}}</span>
                                 </div>
                                 <div class="item-info-product ">
                                     <h4>
                                         <a href="single.html">{{$pnn->name}}</a>
                                     </h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">$70.00</span>
+                                        <!-- <span class="item_price">$70.00</span> -->
                                         <del>{{$pnn->price}}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -269,7 +269,7 @@
                                                 @if($pnn->qty > 0)
                                                  <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">{{trans('messages.addtocart')}}</a>
                                                 @else
-                                                <a href="javascript:void(0)" class="btn btn-warning">Tạm hết</a>
+                                                <a href="javascript:void(0)" class="btn btn-warning">{{trans('messages.outofstock')}}</a>
                                                 @endif
                                             </fieldset>
                                         </form>
@@ -285,11 +285,11 @@
                     </div>
                     <div class="product-sec1 product-sec2">
                         <div class="col-xs-7 effect-bg">
-                            <h3 class="">Pure Energy</h3>
-                            <h6>Enjoy our all healthy Products</h6>
-                            <p>Get Extra 10% Off</p>
+                            <h3 class="" style="font-size: 28px;">{{trans('messages.slidemid')}}</h3>
+                            <h6 style="font-size: 16px;">{{trans('messages.enjoy')}}</h6>
+                            <p >{{trans('messages.getextra')}}</p>
                         </div>
-                        <h3 class="w3l-nut-middle">Nuts & Dry Fruits</h3>
+                        <h3 class="w3l-nut-middle" style="font-size: 27px;">Laptop & Smartphone</h3>
                         <div class="col-xs-5 bg-right-nut">
                             <img src="front_end/images/nut1.png" alt="">
                         </div>
@@ -304,24 +304,24 @@
                                     <img src="{{$pnn->avatar}}" alt="" class="img_home_hot">
                                     <div class="men-cart-pro">
                                         <div class="inner-men-cart-pro">
-                                            <a href="{{route('detail',['id'=>$pnn->id])}}" class="link-product-add-cart">Quick View</a>
+                                            <a href="{{route('detail',['id'=>$pnn->id])}}" class="link-product-add-cart">{{trans('messages.quickview')}}</a>
                                         </div>
                                     </div>
-                                    <span class="product-new-top">New</span>
+                                    <span class="product-new-top">{{trans('messages.new')}}</span>
                                 </div>
                                 <div class="item-info-product ">
                                     <h4>
                                         <a href="single.html">{{$pnn->name}}</a>
                                     </h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">$70.00</span>
+                                        <!-- <span class="item_price">$70.00</span> -->
                                         <del>{{$pnn->price}}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                         @if($pnn->qty > 0)
                                                  <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">{{trans('messages.addtocart')}}</a>
                                                 @else
-                                                <a href="javascript:void(0)" class="btn btn-warning">Tạm hết</a>
+                                                <a href="javascript:void(0)" class="btn btn-warning">{{trans('messages.outofstock')}}</a>
                                                 @endif
 
                                     </div>
@@ -374,14 +374,14 @@
                                 </h4>
                                 <div class="w3l-pricehkj">
                                     <h6>{{$pss->price}}</h6>
-                                    <p>Save $40.00</p>
+                                    <!-- <p>Save $40.00</p> -->
                                 </div>
                                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                     
                                             @if($pss->qty > 0)
                                                  <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pss->id}}">{{trans('messages.addtocart')}}</a>
                                                 @else
-                                                <a href="javascript:void(0)" class="btn btn-warning">Tạm hết</a>
+                                                <a href="javascript:void(0)" class="btn btn-warning">{{trans('messages.outofstock')}}</a>
                                                 @endif
 
                                     </form>
