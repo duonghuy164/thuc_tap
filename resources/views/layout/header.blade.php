@@ -49,7 +49,7 @@
                         <a href="{{route('showCart')}}">Giỏ hàng</a>
                     </li>
                     <li>
-                        <a href="">Lịch sử mua hàng</a>
+                        <a data-toggle="modal" data-target="#myModal5">Lịch sử mua hàng</a>
                     </li>
                     <li><a href="{{route('user.logouta')}}">Đăng xuất</a></li>
                   </ul>
@@ -258,6 +258,52 @@
 </div>
 
 <div class="modal fade" id="myModal4" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body modal-body-sub_agile">
+                <div class="main-mailposi">
+                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                </div>
+              
+                
+                
+                    <div class="modal_body_left modal_body_left1">
+                    <h3 class="agileinfo_sign">Thay đổi mật khẩu</h3>
+                    <form method="POST" id="update_passw_user_pr" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="idUser" value="{{Auth::user()->id}}" placeholder="">
+                    <div class="form-group">
+                        <label for="">Mật khẩu cũ:</label>
+                        <input type="password" name="passOldUser" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Mật khẩu mới:</label>
+                        <input type="password" name="passNewUser" value="" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Nhập lại mật khẩu:</label>
+                        <input type="password" name=""  value="" class="form-control">
+                    </div>
+
+                    </form>
+                        <a href="javascript:void(0)" class="btn btn-success text-center btn-update-pass-profile-user">Cập nhật</a>
+                    <div class="clearfix"></div>
+                </div>
+        
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- //Modal content-->
+    </div>
+</div>
+
+<div class="modal fade" id="myModal5" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <!-- Modal content-->
         <div class="modal-content">

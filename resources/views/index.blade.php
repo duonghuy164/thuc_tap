@@ -10,13 +10,15 @@
                         <option value="">{{trans('messages.category')}}</option>
                         <optgroup label="{{trans('messages.phone')}}">
                             @foreach($pd_phone as $pp_phone)
-                                <option value="{{$pp_phone->id}}">{{$pp_phone->name}}</option>
+                                <option value="{{$pp_phone->id}}">
+                                    <a href="{{route('detail',['id'=>$pp_phone->id])}}">{{$pp_phone->name}}</a></option>
                             @endforeach
                             
                         </optgroup>
                         <optgroup label="Laptop">
                             @foreach($pd_lap as $pp_lap)
-                            <option value="{{$pp_lap->id}}">{{$pp_lap->name}}</option>
+                            <option value="{{$pp_lap->id}}">
+                                <a href="{{route('detail',['id'=>$pp_lap->id])}}">{{$pp_lap->name}}</a></option>
                             @endforeach
                         </optgroup>
                     </select>
@@ -54,7 +56,7 @@
                                                     @foreach($pd_phone as $key => $pdl)
                                                     @if($key < 7)
                                                     <li>
-                                                        <a href="front_end/product.html">{{str_limit($pdl->name,35)}}</a>
+                                                        <a href="{{route('detail',['id'=>$pdl->id])}}">{{str_limit($pdl->name,35)}}</a>
                                                     </li>
                                                     @endif
                                                     @endforeach
@@ -66,7 +68,7 @@
                                                      @foreach($pd_phone as $keys => $pdls)
                                                     @if($keys > 7 && $keys < 14)
                                                     <li>
-                                                        <a href="front_end/product.html">{{str_limit($pdls->name,35)}}</a>
+                                                        <a href="{{route('detail',['id'=>$pdls->id])}}">{{str_limit($pdls->name,35)}}</a>
                                                     </li>
                                                     @endif
                                                     @endforeach
@@ -91,7 +93,7 @@
                                                    @foreach($pd_lap as $keyss => $pdlss)
                                                     @if($keyss < 7 )
                                                     <li>
-                                                        <a href="front_end/product.html">{{$pdlss->name}}</a>
+                                                        <a href="{{route('detail',['id'=>$pdlss->id])}}">{{$pdlss->name}}</a>
                                                     </li>
                                                     @endif
                                                     @endforeach
@@ -102,7 +104,7 @@
                                                    @foreach($pd_lap as $keysss => $pdlsss)
                                                     @if($keysss > 7 && $keysss <14 )
                                                     <li>
-                                                        <a href="front_end/product.html">{{$pdlsss->name}}</a>
+                                                        <a href="{{route('detail',['id'=>$pdlsss->id])}}">{{$pdlsss->name}}</a>
                                                     </li>
                                                     @endif
                                                     @endforeach
@@ -165,7 +167,7 @@
             </h3>
             <!-- //tittle heading -->
             <!-- product left -->
-        <form method="GET" action="{{route('homes')}}">
+        <form method="GET" action="{{route('search')}}">
             @csrf
             <div class="side-bar col-md-3">
                 <div class="search-hotel">
@@ -214,8 +216,8 @@
                             <img src="{{$psl->avatar}}" alt="" class="img_home_hots">
                         </div>
                         <div class="col-xs-8 img-deal1">
-                            <h3>{{$psl->name}}</h3>
-                            <a href="">$18.00</a>
+                            <h3>{{str_limit($psl->name,30)}}</h3>
+                            <a href="">{{number_format($psl->price)}} VNĐ</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -251,8 +253,8 @@
                                         <a href="single.html">{{$pnn->name}}</a>
                                     </h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">$70.00</span>
-                                        <del>{{$pnn->price}}</del>
+                                        <span class="item_price">{{number_format($pnn->price - ($pnn->price * $pnn->sale/100)) }} VNĐ</span>
+                                        <del>{{number_format($pnn->price)}} VNĐ</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                         <form action="#" method="post">
@@ -314,8 +316,8 @@
                                         <a href="single.html">{{$pnn->name}}</a>
                                     </h4>
                                     <div class="info-product-price">
-                                        <span class="item_price">$70.00</span>
-                                        <del>{{$pnn->price}}</del>
+                                        <span class="item_price">{{number_format($pnn->price - ($pnn->price * $pnn->sale/100)) }} VNĐ</span>
+                                        <del>{{number_format($pnn->price) }} VNĐ</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                         @if($pnn->qty > 0)
@@ -373,8 +375,8 @@
                                     <a href="single.html">{{$pss->name}}/a>
                                 </h4>
                                 <div class="w3l-pricehkj">
-                                    <h6>{{$pss->price}}</h6>
-                                    <p>Save $40.00</p>
+                                    <h6>{{number_format($pss->price)}} VNĐ</h6>
+                                 
                                 </div>
                                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                     

@@ -29,7 +29,7 @@ Route::post('images-save','User\HomeController@saveImage')->name('images-save');
 Route::post('sign-up','User\LoginController@signUp')->name('user.signUp');
 Route::get('confirm/{id}','User\LoginController@confirm')->name('user.confirmMail');
 Route::post('user/login','User\LoginController@login')->name('user.login');
-
+Route::get('search','User\HomeController@search')->name('search');
 
 Route::post('update/user','User\LoginController@update')->name('update.user');
 Route::post('update/pass/user','User\LoginController@updatePass')->name('updatePass.user');

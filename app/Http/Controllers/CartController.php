@@ -111,10 +111,23 @@ class CartController extends Controller
         {
             return back()->with('error','Vui lòng cập nhật địa chỉ trong hồ sơ để tiếp tục!');
         }else{
+            $or_cd = 'order'.time();
             if($request->payment == 1){
                 session(['cost_id' => $id]);
                 session(['url_prev' => url()->previous()]);
-                $or_cd = 'order'.time();
+                $or = new Order();
+                $or->user_id = $id;
+                $or->total_price = ($request->amount);
+                $or->code_orders = $or_cd;
+                $or->payment_form = 1;
+                $or->product = json_encode($pd,true);
+                $or->address = $request->address;
+                $or->note = $request->notePayment;
+                $or->status = -1;
+                $or->created_at =Carbon\Carbon::now()->toDateString('d-m-Y H:i:s');
+                $or->save();
+
+
                 $vnp_TmnCode = "ER4GEOOF"; //Mã website tại VNPAY 
                 $vnp_HashSecret = "CUIVKOOHVVKENLUCEIBUKRQEUBGBWLVG"; //Chuỗi bí mật
                 $vnp_Url = "http://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
@@ -144,7 +157,6 @@ class CartController extends Controller
                     $inputData['vnp_BankCode'] = $vnp_BankCode;
                 }
                 ksort($inputData);
-
                 $query = "";
                 $i = 0;
                 $hashdata = "";
@@ -172,12 +184,14 @@ class CartController extends Controller
                 $or->code_orders = $or_cd;
                 $or->payment_form = 0;
                 $or->product = json_encode($pd,true);
+                $or->address = $request->address;
+                $or->note = $request->notePayment;
+                $or->status = 0;
                 $or->created_at =Carbon\Carbon::now()->toDateString('d-m-Y H:i:s');
                 $or->save();
                 $datq = array();
-                
                Cart::destroy();
-                return back()->with('success','Thanh Toán thành công!');
+                return back()->with('success','Đặt hàng thành công!');
             }
         }
     }
@@ -186,10 +200,15 @@ class CartController extends Controller
         
         $url = session('url_prev','/');
         if($request->vnp_ResponseCode == "00") {
-            // $this->apSer->thanhtoanonline(session('cost_id'));
-            return redirect($url)->with('success' ,'Đã thanh toán phí dịch vụ');
+            
+             $ors  =Order::where('code_orders',$request->vnp_TxnRef)->first();
+             $ors->status = 1;
+             $ors->save();
+
+            Cart::destroy();
+            return redirect($url)->with('success' ,'Đã thanh toán phí dịch vụ!');
         }
         // Cart::destroy();
-        return redirect($url)->with('errors' ,'Lỗi trong quá trình thanh toán phí dịch vụ');
+        return redirect($url)->with('error' ,'Lỗi trong quá trình thanh toán phí dịch vụ!');
     }
 }

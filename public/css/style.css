@@ -21,3 +21,7 @@ p.payment_text{
 	color: #FF5722;
 	font-size: 21px;
 }
+.address_form_agile .input-group{
+	margin-right: 370px;
+	float: left;
+}

@@ -22,7 +22,7 @@
     </div>
     <!-- //page -->
     <!-- checkout page -->
-    <div class="privacy before_payment display-none">
+    <div class="privacy before_payment ">
         <div class="container">
             <!-- tittle heading -->
             <h3 class="tittle-w3l">Checkout
@@ -72,7 +72,7 @@
                                         </div>
                                     </td>
                                     <td class="invert">{{$vl->name}}</td>
-                                    <td class="invert">{{number_format(($vl->price-($vl->price * $vl->options->sale)/100)*$vl->qty)}}</td>
+                                    <td class="invert">{{($vl->price-($vl->price * $vl->options->sale)/100)*$vl->qty}}</td>
                                     @php 
                                         $i++;
                                         $total += (int)($vl->price - (($vl->price * $vl->options['sale'])/100)) * $vl->qty;
@@ -106,11 +106,13 @@
                     </div>
 
                     <div class="input-group">
-                        <label for="tt_atm">Địa chỉ nhận hàng</label>
-                        <input type="text" name="address" required>
+                        <input type="text" name="address" required placeholder="Địa chỉ nhận hàng">
+                        <textarea name="notePayment"></textarea>
                     </div>
-                        <input type="hidden" name="amount" value="{{ $total}}">
+                    <div class="input-group">
+                        <input type="hidden" name="amount" value="{{ $total }}">
                         <button class="btn btn-primary">Mua ngay</button>
+                    </div>
                     </form>
                     
                     @if(session('error'))
@@ -126,10 +128,20 @@
         </div>
     </div>
 
-    <div class="privacy after_payment "></div>
+    <div class="privacy after_payment display-none text-center">
+        @if(session('success')|| session('error'))
+            <h4 class="text-center">{{session('success')}}</h4>
+            <h4 class="text-center">{{session('error')}}</h4>
+
+        @endif
+        <a href="{{route('homes')}}" >Home</a>
+    </div>
 @endsection
 @section('addjs')
     <script type="text/javascript">
-       
+       @if(session('success') || session('error'))
+        $('.before_payment').addClass('display-none');
+        $('.after_payment').removeClass('display-none');
+       @endif
     </script>
 @endsection
