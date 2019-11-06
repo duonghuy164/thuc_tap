@@ -72,13 +72,7 @@
                 
                 <div class="occasion-cart">
                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                       {{--  <form action="{{route('addToCart')}}" method="post">
-                            @csrf
-                            <fieldset>
-                                <input type="hidden" name="id_product" value="{{$pr->id}}" />
-                                <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
-                            </fieldset>
-                        </form> --}}
+                       
                         <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pr->id}}">{{trans('messages.addtocart')}}</a>
                     </div>
 
@@ -105,7 +99,7 @@
                 <ul id="flexiselDemo1">
                     @foreach($product_sales as $ps)
                     <li>
-                        <div class="w3l-specilamk">
+                        <div class="w3l-specilamk"> 
                             <div class="speioffer-agile">
                                 <a href="single.html">
                                     <img src="{{asset($ps->avatar)}}" class="img_home_hots" alt="">
@@ -120,20 +114,11 @@
                                     <p>Save ${{$ps->sale}}</p>
                                 </div>
                                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                    {{-- <form action="#" method="post">
-                                        <fieldset>
-                                            <input type="hidden" name="cmd" value="_cart" />
-                                            <input type="hidden" name="add" value="1" />
-                                            <input type="hidden" name="business" value=" " />
-                                            <input type="hidden" name="item_name" value="Aashirvaad, 5g" />
-                                            <input type="hidden" name="amount" value="220.00" />
-                                            <input type="hidden" name="discount_amount" value="1.00" />
-                                            <input type="hidden" name="currency_code" value="USD" />
-                                            <input type="hidden" name="return" value=" " />
-                                            <input type="hidden" name="cancel_return" value=" " />
-                                            <input type="submit" name="submit" value="{{trans('messages.addtocart')}}" class="button" />
-                                        </fieldset>
-                                    </form> --}}
+                                    @if($ps->qty > 0)
+                                                 <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$ps->id}}">{{trans('messages.addtocart')}}</a>
+                                                @else
+                                                <a href="javascript:void(0)" class="btn btn-warning">Tạm hết</a>
+                                                @endif
 
                                 </div>
                             </div>
@@ -177,6 +162,7 @@ $(window).load(function() {
   });
 });
 $('.add_toCart').click(function(){
+    @if(Auth::user())
     var id_pr = $(this).attr('id');
     $.ajax({
         headers: {
@@ -188,11 +174,23 @@ $('.add_toCart').click(function(){
 
         success:function(data){
             if(data.msg == 'OK'){
-                alert('OK');
-                // location.reload();
+                Swal.fire(
+                      'Thành công!',
+                      'Thêm vào giỏ hàng thành công!',
+                      'success'
+                    )
             }
         } 
     });
+    @else
+            Swal.fire(
+                      'Thất bại!',
+                      'Vui lòng đăng nhập để có thể thêm vào giỏ hàng!',
+                      'error'
+                    )
+        @endif
+
+
 });
 </script>
 @endsection

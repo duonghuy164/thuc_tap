@@ -40,6 +40,7 @@
     <!-- Modernizr -->
   
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    @yield('addcss')
 </head>
 
 <body>
@@ -253,9 +254,11 @@
 <script src="{{asset('js/jquery.easing.js')}}"></script>
 <script src="{{asset('js/jquery.mousewheel.js')}}"></script>
 <script defer src="{{asset('js/demo.js')}}"></script>
+<script defer src="{{asset('js/jquery.validate.min.js')}}"></script>
+
 @yield('addjs')
 <script type="text/javascript">
-    $('.btn-sign-in').click(function(){
+    $('.btn-sign-in').click(function(){ 
         $.ajax({
             url:"{{route('user.signUp')}}",
             type : "POST",
@@ -266,9 +269,21 @@
             processData: false,
             success:function(data){
                 if(data.msg=='FAIL1'){
-                    $('.text_error').text('Tài khoản đã tồn tại');
+                    Swal.fire(
+                      'Thất bại!',
+                      'Tài khoản đã tồn tại!',
+                      'error'
+                    )
+                    
                 }else if(data.msg == 'OK'){
-                    $('.text_submit').text('Vui lòng kiểm tra mail!');
+                    Swal.fire(
+                      'Thành công!',
+                      'Vui lòng kiểm tra email!',
+                      'success'
+                    ).then(function(){
+                        $('#myModal2').modal('hide');
+                    });
+                    // $('.text_submit').text('Vui lòng kiểm tra mail!');
                 }
             }
         });
@@ -285,11 +300,25 @@
             processData: false,
             success:function(data){
                 if(data.msg=='FAIL1'){
-                    $('.error_email_not').text('Tài khoản không tồn tại');
+                    Swal.fire(
+                      'Thất bại!',
+                      'Tài khoản hoặc mật khẩu không chính xác!',
+                      'error'
+                    )
                 }else if(data.msg == 'FAIL2'){
-                    $('.error_email_not').text('Tài khoản chưa kích hoạt');
+                    Swal.fire(
+                      'Thất bại!',
+                      'Tài khoản chưa kích hoạt!',
+                      'warning'
+                    )    
                 }else if(data.msg == 'OK'){
                     location.reload();
+                }else if(data.msg == 'FAIL3'){
+                    Swal.fire(
+                      'Thất bại!',
+                      'Tài khoản hoặc mật khẩu không chính xác!',
+                      'error'
+                    )  
                 }
             }
         });
@@ -307,11 +336,26 @@
             processData: false,
             success:function(data){
                 if(data.msg=='FAIL1'){
-                    $('.error_email_not').text('Tài khoản không tồn tại');
+                    Swal.fire(
+                      'Thất bại!',
+                      'Tài khoản đã tồn tại!',
+                      'error'
+                    )
                 }else if(data.msg == 'FAIL2'){
-                    $('.error_email_not').text('Tài khoản chưa kích hoạt');
+                     Swal.fire(
+                      'Thất bại!',
+                      'Tài khoản chưa kích hoạt!',
+                      'error'
+                    )
+                    
                 }else if(data.msg == 'OK'){
-                    location.reload();
+                    Swal.fire(
+                      'Thành công!',
+                      'Cập nhật thành công!',
+                      'success'
+                    ).then(function(){
+                        $('#myModal3').modal('hide');
+                    });
                 }
             }
         });
@@ -332,6 +376,7 @@
                 }else if(data.msg == 'FAIL2'){
                     $('.error_email_not').text('Tài khoản chưa kích hoạt');
                 }else if(data.msg == 'OK'){
+
                     location.reload();
                 }
             }

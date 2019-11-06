@@ -10,9 +10,8 @@
         <div class="col-md-4 logo_agile">
             <h1> 
                 <a href="{{route('homes')}}">
-                    <span>G</span>rocery
-                    <span>S</span>hoppy
-                    <img src="{{asset('front_end/images/logo2.png')}}" alt=" ">
+                    <span>S</span>hopping <span>W</span>ith
+                    <img src="{{asset('front_end/images/a51e563621cfc7919ede.jpg')}}" alt=" ">
                 </a>
             </h1>
         </div>
@@ -46,6 +45,12 @@
                   <ul class="dropdown-menu">
                     <li><a href="#" data-toggle="modal" data-target="#myModal3">Thông tin cá nhân</a></li>
                     <li><a href="#" data-toggle="modal" data-target="#myModal4">Thay đổi mật khẩu</a></li>
+                    <li>
+                        <a href="{{route('showCart')}}">Giỏ hàng</a>
+                    </li>
+                    <li>
+                        <a href="">Lịch sử mua hàng</a>
+                    </li>
                     <li><a href="{{route('user.logouta')}}">Đăng xuất</a></li>
                   </ul>
                 </div>
@@ -180,7 +185,7 @@
                             <input type="password" placeholder="Mật khẩu" name="password" id="password1" required="">
                         </div>
                         <div class="styled-input">
-                            <input type="password" placeholder="Nhập lại" name="Confirm Password" id="password2" required="">
+                            <input type="password" placeholder="Nhập lại" name="rePass" id="password2" required="">
                         </div>
                         <a href="javascript:void(0)" class="btn btn-success btn-sign-in">Đăng ký</a>
                     </form>
@@ -232,8 +237,13 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="">Địa chỉ:</label>
+                        <label for="">Địa chỉ 1:</label>
                         <input type="text" name="addressUser" value="{{Auth::user()->address}}" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Địa chỉ 2:</label>
+                        <input type="text" name="addressUser2" value="{{Auth::user()->address_work}}" class="form-control">
                     </div>
                     </form>
                         <a href="javascript:void(0)" class="btn btn-success text-center btn-update-profile-user">Cập nhật</a>

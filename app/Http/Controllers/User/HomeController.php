@@ -16,17 +16,17 @@ class HomeController extends Controller
     {
    
         $product = Product::all();
-        $pd_phone = Product::select('id','name')->where('category_id',2)->get();
-        $pd_lap = Product::select('id','name')->where('category_id',1)->get();
+        $pd_phone = Product::select('id','name','avatar','qty')->where('category_id',2)->take(3)->get();
+        $pd_lap = Product::select('id','name','avatar','qty')->where('category_id',1)->take(3)->get();
         
        
-        $product_sale = Product::select('id','name','avatar','sale','price')->orderBy('sale','asc')->take(10)->get();
-        $product_sales = Product::select('name','avatar','sale','price')->orderBy('sale','asc')->take(5)->get();
+        $product_sale = Product::select('id','name','avatar','sale','price','qty')->orderBy('sale','asc')->take(10)->get();
+        $product_sales = Product::select('name','avatar','sale','price','qty')->orderBy('sale','asc')->take(5)->get();
         $brand = Brands::all();
         $price = Price::all();
         $city  = DB::table('city')->select('id','name')->get()->toArray();
     
-        $product_new = Product::select('id','name','avatar','sale','price');
+        $product_new = Product::select('id','name','avatar','sale','price','qty');
         if($request->name_search){
             $name_search = $request->name_search;
             $product_new = $product_new->where('name','like','%'.$name_search.'%');
@@ -49,7 +49,7 @@ class HomeController extends Controller
         try{
             $pr = Product::find($id);
             $image = Images::where('product_id',$id)->get();
-            $product_sales = Product::select('name','avatar','sale','price')->orderBy('sale','asc')->take(5)->get();
+            $product_sales = Product::select('id','name','avatar','sale','price','qty')->orderBy('sale','asc')->take(5)->get();
              $city  = DB::table('city')->select('id','name')->get()->toArray();
             return view('pages.single',compact('pr','image','product_sales','city'));
         }catch (\Exception $e) {

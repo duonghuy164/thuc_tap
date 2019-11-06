@@ -36,9 +36,9 @@ Route::post('update/pass/user','User\LoginController@updatePass')->name('updateP
 
 Route::get('logout/user','User\LoginController@logout')->name('user.logouta');
 Route::get('payment/cart','CartController@payment')->name('payment.index');
+Route::post('get/payment/cart','CartController@getPayment')->name('getPayMent');
 
-
-
+Route::get('return-vnpay','CartController@return')->name('return_vnPay');
 Route::group(['prefix' => 'system-admin', 'namespace' => 'Admin' , 'middleware' => 'adminLogin' ], function () {
   
   Route::get('/', 'DashboardController@index')->name('system_admin.dashboard');

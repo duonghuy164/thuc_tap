@@ -65,6 +65,10 @@ class LoginController extends Controller
       				return response()->json([
       					'msg'=>'OK'
       				]);
+               }else{
+                  return response()->json([
+                     'msg'=>'FAIL3'
+                  ]);
                }
    			}
    		}else{
@@ -87,6 +91,7 @@ class LoginController extends Controller
          $us->phone = $request->phoneUser;
          $us->date = $request->dateUser;
          $us->address = $request->addressUser;
+         $us->address_work = $request->addressUser2;
          $us->save();
 
          return response()->json([

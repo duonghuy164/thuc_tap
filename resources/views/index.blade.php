@@ -146,7 +146,7 @@
                         <a href="{{route('home')}}">Home</a>
                         <i>|</i>
                     </li>
-                    <li>Laptop</li>
+                    
                 </ul>
             </div>
         </div>
@@ -156,7 +156,7 @@
     <div class="ads-grid">
         <div class="container">
             <!-- tittle heading -->
-            <h3 class="tittle-w3l">Laptop
+            <h3 class="tittle-w3l">BHQ
                 <span class="heading-style">
 					<i></i>
 					<i></i>
@@ -165,7 +165,7 @@
             </h3>
             <!-- //tittle heading -->
             <!-- product left -->
-        <form method="GET" action="{{route('home')}}">
+        <form method="GET" action="{{route('homes')}}">
             @csrf
             <div class="side-bar col-md-3">
                 <div class="search-hotel">
@@ -234,7 +234,7 @@
                     <!-- 2nd section) -->
                     <div class="product-sec1">
                         <h1 class="text-center">Điện Thoại</h1>
-                        @foreach($pd_phone  as $pnn)
+                        @foreach($pd_phone  as $pnn) 
                             <div class="col-md-4 product-men">
                             <div class="men-pro-item simpleCart_shelfItem">
                                 <div class="men-thumb-item">
@@ -266,8 +266,11 @@
                                                 <input type="hidden" name="currency_code" value="USD" />
                                                 <input type="hidden" name="return" value=" " />
                                                 <input type="hidden" name="cancel_return" value=" " />
+                                                @if($pnn->qty > 0)
                                                  <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">{{trans('messages.addtocart')}}</a>
-                                                
+                                                @else
+                                                <a href="javascript:void(0)" class="btn btn-warning">Tạm hết</a>
+                                                @endif
                                             </fieldset>
                                         </form>
                                     </div>
@@ -315,7 +318,12 @@
                                         <del>{{$pnn->price}}</del>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">{{trans('messages.addtocart')}}</a>
+                                        @if($pnn->qty > 0)
+                                                 <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pnn->id}}">{{trans('messages.addtocart')}}</a>
+                                                @else
+                                                <a href="javascript:void(0)" class="btn btn-warning">Tạm hết</a>
+                                                @endif
+
                                     </div>
 
                                 </div>
@@ -370,8 +378,11 @@
                                 </div>
                                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                     
-                                            <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pss->id}}">{{trans('messages.addtocart')}}</a>
-                                    
+                                            @if($pss->qty > 0)
+                                                 <a href="javascript:void(0)" class="btn btn-primary add_toCart" id="{{$pss->id}}">{{trans('messages.addtocart')}}</a>
+                                                @else
+                                                <a href="javascript:void(0)" class="btn btn-warning">Tạm hết</a>
+                                                @endif
 
                                     </form>
                                 </div>
@@ -398,22 +409,34 @@
     });
 
     $('.add_toCart').click(function(){
-    var id_pr = $(this).attr('id');
-    $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        url:"{{route('addToCart')}}",
-        type:"POST",
-        data:{id:id_pr},
+        @if(Auth::user())
+            var id_pr = $(this).attr('id');
+            $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url:"{{route('addToCart')}}",
+                type:"POST",
+                data:{id:id_pr},
 
-        success:function(data){
-            if(data.msg == 'OK'){
-                alert('OK');
-                // location.reload();
-            }
-        } 
-    });
+                success:function(data){
+                    if(data.msg == 'OK'){
+                       Swal.fire(
+                          'Thành công!',
+                          'Thêm sản phẩm vào giỏ hàng thành công!',
+                          'success'
+                        )
+                        // location.reload();
+                    }
+                } 
+            });
+        @else
+            Swal.fire(
+                      'Thất bại!',
+                      'Vui lòng đăng nhập để có thể thêm vào giỏ hàng!',
+                      'error'
+                    )
+        @endif
 });
 </script>
 @endsection

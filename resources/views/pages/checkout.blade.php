@@ -57,7 +57,8 @@
                                     <td class="invert">
                                         <div class="quantity">
                                             <div class="quantity-select">
-                                                <input type="number" class="qtyProduct" value="{{$vl->qty}}" id="{{$key}}">
+                                                <input type="number" class="qtyProduct" value="{{$vl->qty}}" id="{{$key}}" step="{{$vl->id}}">
+                                                <input type="hidden" name="qtyNow" value="{{$vl->id}}" >
                                             </div>
                                         </div>
                                     </td>
@@ -146,25 +147,35 @@
         })
     });
         
-           
-    
-    
-
         $('.qtyProduct').on('change',function(){
             var val_qty = $(this).val();
             var id_pr = $(this).attr('id');
+            var id_pds = $(this).attr('step');
             $.ajax({
                 headers: {
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 url:"{{route('UpdateCart')}}",
                 type:"POST",
-                data:{id:id_pr,qty:val_qty},
+                data:{id:id_pr,qty:val_qty,id_pd:id_pds},
 
                 success:function(data){
                     if(data.msg == 'OK'){
-                        alert('OK');
-                        // location.reload();
+                        Swal.fire(
+                          'Thành công!',
+                          'Cập nhật giỏ hàng thành công!',
+                          'success'
+                        ).then(function(){
+                       location.reload();
+                        });
+                    }else{
+                        Swal.fire(
+                          'Thất bại!',
+                          'Số lượng sản phẩm không đủ!',
+                          'error'
+                        ).then(function(){
+                       location.reload();
+                        });
                     }
                 } 
             });
