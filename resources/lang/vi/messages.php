@@ -36,4 +36,10 @@ return [
 'downapp'=>'Tải ứng dụng trên',
 'address'=>'139 Chiến Thắng - Thanh Trì - Hà Nội.',
 'addmore'=>'Sản phẩm liên quan',
+'quickview'=>'Xem nhanh',
+'new'=>'Mới',
+'outofstock'=>'Tạm hết',
+'slidemid'=>'Mua sắm thông minh',
+'enjoy'=>'Bắt đầu với những sản phẩm chất lượng',
+'getextra'=>'Nhận thêm 10% giá'
 ];
